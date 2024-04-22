@@ -5,7 +5,7 @@ const NavButton = ({ isActive }) => {
 };
 
 NavButton.propTypes = {
-  isActive: PropTypes.boolean.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
 
 export default NavButton;
