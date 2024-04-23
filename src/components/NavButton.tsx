@@ -6,7 +6,7 @@ export interface NavButtonProps {
 const NavButton = ({ isActive, label }: NavButtonProps) => {
   return (
     isActive && (
-      <button className="btn">
+      <button className="btn flex w-40 justify-between">
         <div>
           <img
             src={`src/assets/${label.toLowerCase()}.svg`}
