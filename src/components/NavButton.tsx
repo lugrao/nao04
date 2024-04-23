@@ -1,4 +1,8 @@
-const NavButton = ({ isActive }) => {
+export interface NavButtonProps {
+  isActive: boolean;
+}
+
+const NavButton = ({ isActive }: NavButtonProps) => {
   return (
     isActive && (
       <button className="btn">
@@ -10,7 +14,5 @@ const NavButton = ({ isActive }) => {
     )
   );
 };
-
-
 
 export default NavButton;
