@@ -15,7 +15,7 @@ const NavButton = ({ isActive, label }: NavButtonProps) => {
             alt="Dashboard icon"
           />
         </div>
-        <div>{label}</div>
+        <div className="text-indigo-900">{label}</div>
       </button>
     )
   );
