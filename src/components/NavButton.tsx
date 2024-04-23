@@ -12,7 +12,7 @@ const NavButton = ({ isActive, label }: NavButtonProps) => {
             width={25}
             height={25}
             src={`src/assets/${label.toLowerCase()}.svg`}
-            alt="Dashboard icon"
+            alt={`Ícono de ${label}`}
           />
         </div>
         <div className="text-base font-medium text-indigo-900">{label}</div>
