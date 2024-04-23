@@ -5,7 +5,7 @@ export interface NavButtonProps {
 
 const NavButton = ({ isActive, label }: NavButtonProps) => {
   return isActive ? (
-    <button className="btn flex w-44 justify-between bg-purple-50 shadow-lg hover:border-neutral-200 hover:bg-neutral-200">
+    <button className="btn flex w-44 justify-start bg-purple-50 shadow-lg hover:border-neutral-200 hover:bg-neutral-200">
       <div>
         <img
           width={25}
@@ -14,10 +14,10 @@ const NavButton = ({ isActive, label }: NavButtonProps) => {
           alt={`Ícono de ${label}`}
         />
       </div>
-      <div className="text-base font-medium text-indigo-900">{label}</div>
+      <div className="pl-4 text-base font-medium text-indigo-900">{label}</div>
     </button>
   ) : (
-    <button className="btn flex w-44 justify-between border-white bg-white hover:border-neutral-200 hover:bg-neutral-200">
+    <button className="btn flex w-44 justify-start border-white bg-white hover:border-neutral-200 hover:bg-neutral-200">
       <div>
         <img
           width={20}
@@ -26,7 +26,7 @@ const NavButton = ({ isActive, label }: NavButtonProps) => {
           alt={`Ícono de ${label}`}
         />
       </div>
-      <div className="text-base font-medium text-indigo-300">{label}</div>
+      <div className="pl-4 font-medium text-indigo-300">{label}</div>
     </button>
   );
 };
