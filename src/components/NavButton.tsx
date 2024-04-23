@@ -9,6 +9,8 @@ const NavButton = ({ isActive, label }: NavButtonProps) => {
       <button className="btn flex w-40 justify-between">
         <div>
           <img
+            width={25}
+            height={25}
             src={`src/assets/${label.toLowerCase()}.svg`}
             alt="Dashboard icon"
           />
