@@ -1,15 +1,19 @@
 export interface NavButtonProps {
   isActive: boolean;
+  label: "Dashboard" | "Ventas" | "Productos" | "Recibos" | "Cerrar sesión";
 }
 
-const NavButton = ({ isActive }: NavButtonProps) => {
+const NavButton = ({ isActive, label }: NavButtonProps) => {
   return (
     isActive && (
       <button className="btn">
         <div>
-          <img src="src/assets/dashboard.svg" alt="Dashboard icon" />
+          <img
+            src={`src/assets/${label.toLowerCase()}.svg`}
+            alt="Dashboard icon"
+          />
         </div>
-        <div>Dashboard</div>
+        <div>{label}</div>
       </button>
     )
   );
