@@ -6,7 +6,7 @@ export interface NavButtonProps {
 const NavButton = ({ isActive, label }: NavButtonProps) => {
   return (
     isActive && (
-      <button className="btn flex w-40 justify-between bg-purple-50">
+      <button className="btn flex w-40 justify-between bg-purple-50 hover:border-neutral-200 hover:bg-neutral-200">
         <div>
           <img
             width={25}
