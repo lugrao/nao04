@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 const NavButton = ({ isActive }) => {
   return (
     isActive && (
@@ -13,8 +11,6 @@ const NavButton = ({ isActive }) => {
   );
 };
 
-NavButton.propTypes = {
-  isActive: PropTypes.bool.isRequired,
-};
+
 
 export default NavButton;
