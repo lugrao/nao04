@@ -5,7 +5,7 @@ const CustomerService = () => {
         <h2 className="text-center text-base font-semibold">
           Atención al cliente
         </h2>
-        <p className="text-sm text-stone-500">
+        <p className="text-sm text-stone-500 pt-2 pb-3">
           Nuestro equipo está disponible las 24 horas para resolver cualquier
           duda que tengas.
         </p>
