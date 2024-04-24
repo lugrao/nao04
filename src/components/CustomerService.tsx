@@ -9,7 +9,7 @@ const CustomerService = () => {
           Nuestro equipo está disponible las 24 horas para resolver cualquier
           duda que tengas.
         </p>
-        <div className="card-actions justify-center">
+        <div className="card-actions justify-left">
           <button className="btn bg-blue-200 font-semibold text-sky-700 hover:bg-blue-300">
             <div>
               <img
