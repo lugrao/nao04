@@ -14,7 +14,9 @@ const Sidebar = () => {
         <NavButton isActive={false} label="Ventas" />
         <NavButton isActive={false} label="Productos" />
         <NavButton isActive={false} label="Recibos" />
-        <NavButton isActive={false} label="Cerrar sesión" />
+        <div className="mt-8">
+          <NavButton isActive={false} label="Cerrar sesión" />
+        </div>
       </div>
       <CustomerService />
     </div>
