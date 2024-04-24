@@ -26,7 +26,7 @@ const NavButton = ({ isActive, label }: NavButtonProps) => {
           alt={`Ícono de ${label}`}
         />
       </div>
-      <div className="pl-4 font-medium text-indigo-300">{label}</div>
+      <div className="pl-4 text-sm font-medium text-indigo-300">{label}</div>
     </button>
   );
 };
