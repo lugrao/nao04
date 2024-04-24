@@ -8,7 +8,9 @@ const Sidebar = () => {
         <img src="/capsule-corp.svg" alt="Capsule Corp. logo" />
       </div>
       <div className="flex flex-col gap-6">
-        <NavButton isActive={true} label="Dashboard" />
+        <div className="mb-4">
+          <NavButton isActive={true} label="Dashboard" />
+        </div>
         <NavButton isActive={false} label="Ventas" />
         <NavButton isActive={false} label="Productos" />
         <NavButton isActive={false} label="Recibos" />
