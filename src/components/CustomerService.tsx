@@ -22,7 +22,7 @@ const CustomerService = () => {
             Conéctate ya
           </button>
         </div>
-        <div className="pt-12 flex flex-col gap-1 text-left text-sm text-stone-500">
+        <div className="flex flex-col gap-1 pt-12 text-left text-sm text-stone-500">
           <a href="">Términos y condiciones</a>
           <a href="">Política de privacidad</a>
         </div>
