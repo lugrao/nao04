@@ -6,7 +6,13 @@ const Sidebar = () => {
       <div className="mt-0 flex h-20 w-20 justify-center">
         <img src="/capsule-corp.svg" alt="Capsule Corp. logo" />
       </div>
-      <NavButton isActive={true} label="Dashboard" />
+      <div>
+        <NavButton isActive={true} label="Dashboard" />
+        <NavButton isActive={false} label="Ventas" />
+        <NavButton isActive={false} label="Productos" />
+        <NavButton isActive={false} label="Recibos" />
+        <NavButton isActive={false} label="Cerrar sesión" />
+      </div>
     </div>
   );
 };
