@@ -1,6 +1,6 @@
 const CustomerService = () => {
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-base-100">
       <div className="card-body">
         <h2 className="card-title">Atención al cliente</h2>
         <p>
