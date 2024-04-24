@@ -9,7 +9,7 @@ const CustomerService = () => {
           Nuestro equipo está disponible las 24 horas para resolver cualquier
           duda que tengas.
         </p>
-        <div className="card-actions justify-left">
+        <div className="justify-left card-actions">
           <button className="btn bg-blue-200 font-semibold text-sky-700 hover:bg-blue-300">
             <div>
               <img
@@ -22,10 +22,10 @@ const CustomerService = () => {
             Conéctate ya
           </button>
         </div>
-      </div>
-      <div className="flex flex-col gap-1 text-sm text-stone-500">
-        <a href="">Términos y condiciones</a>
-        <a href="">Política de privacidad</a>
+        <div className="pt-12 flex flex-col gap-1 text-left text-sm text-stone-500">
+          <a href="">Términos y condiciones</a>
+          <a href="">Política de privacidad</a>
+        </div>
       </div>
     </div>
   );
