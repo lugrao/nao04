@@ -2,10 +2,10 @@ const CustomerService = () => {
   return (
     <div className="card bg-base-100">
       <div className="card-body">
-        <h2 className="text-center text-base font-semibold">
+        <h2 className="text-left text-base font-semibold">
           Atención al cliente
         </h2>
-        <p className="pb-3 pt-2 text-sm text-stone-500">
+        <p className="pb-3 pt-2 text-left text-sm text-stone-500">
           Nuestro equipo está disponible las 24 horas para resolver cualquier
           duda que tengas.
         </p>
