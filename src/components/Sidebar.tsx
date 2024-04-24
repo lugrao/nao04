@@ -1,4 +1,5 @@
 import NavButton from "./NavButton";
+import CustomerService from "./CustomerService";
 
 const Sidebar = () => {
   return (
@@ -13,6 +14,7 @@ const Sidebar = () => {
         <NavButton isActive={false} label="Recibos" />
         <NavButton isActive={false} label="Cerrar sesión" />
       </div>
+      <CustomerService />
     </div>
   );
 };
