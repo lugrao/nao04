@@ -3,7 +3,7 @@ const CustomerService = () => {
     <div className="card bg-base-100">
       <div className="card-body">
         <h2 className="card-title text-base">Atención al cliente</h2>
-        <p className="text-sm">
+        <p className="text-sm text-stone-500">
           Nuestro equipo está disponible las 24 horas para resolver cualquier
           duda que tengas.
         </p>
@@ -21,10 +21,10 @@ const CustomerService = () => {
           </button>
         </div>
       </div>
-      <a className="text-sm" href="">
+      <a className="text-sm text-stone-500" href="">
         Términos y condiciones
       </a>
-      <a className="text-sm" href="">
+      <a className="text-sm text-stone-500" href="">
         Política de privacidad
       </a>
     </div>
