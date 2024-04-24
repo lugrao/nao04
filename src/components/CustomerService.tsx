@@ -8,7 +8,7 @@ const CustomerService = () => {
           duda que tengas.
         </p>
         <div className="card-actions justify-center">
-          <button className="btn bg-blue-200 text-sky-700">
+          <button className="btn bg-blue-200 font-semibold text-sky-700">
             <div>
               <img
                 src="src/assets/atención-al-cliente.svg"
