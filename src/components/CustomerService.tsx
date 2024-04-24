@@ -21,12 +21,10 @@ const CustomerService = () => {
           </button>
         </div>
       </div>
-      <a className="text-sm text-stone-500" href="">
-        Términos y condiciones
-      </a>
-      <a className="text-sm text-stone-500" href="">
-        Política de privacidad
-      </a>
+      <div className="flex flex-col gap-1 text-sm text-stone-500">
+        <a href="">Términos y condiciones</a>
+        <a href="">Política de privacidad</a>
+      </div>
     </div>
   );
 };
