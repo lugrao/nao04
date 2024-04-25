@@ -1,9 +1,27 @@
+import { useState } from "react";
 import NavButton from "./NavButton";
 import CustomerService from "./CustomerService";
+import { ButtonId } from "./NavButton";
+
+interface ButtonIds {
+  [K: string]: ButtonId;
+}
+
+const btnIds: ButtonIds = {
+  dashboard: "btn-dashboard",
+  sales: "btn-sales",
+  products: "btn-products",
+  invoices: "btn-invoices",
+  logout: "btn-logout",
+};
 
 const Sidebar = () => {
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) =>
-    console.log(e.currentTarget.id);
+  const [activeButton, setActiveButton] = useState("btn-dashboard");
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const id = e.currentTarget.id;
+    setActiveButton(id);
+    if (id === btnIds.logout) return console.log("logged out");
+  };
 
   return (
     <div className="flex w-72 flex-col items-center rounded-l-3xl bg-white pt-7">
@@ -14,33 +32,33 @@ const Sidebar = () => {
         <div className="flex flex-col gap-4 pb-7">
           <div className="mb-3">
             <NavButton
-              id="dashboard"
+              id={btnIds.dashboard}
               onClick={handleClick}
-              isActive={false}
+              isActive={activeButton === btnIds.dashboard}
               label="Dashboard"
             />
           </div>
           <NavButton
-            id="sales"
+            id={btnIds.sales}
             onClick={handleClick}
-            isActive={true}
+            isActive={activeButton === btnIds.sales}
             label="Ventas"
           />
           <NavButton
-            id="products"
+            id={btnIds.products}
             onClick={handleClick}
-            isActive={false}
+            isActive={activeButton === btnIds.products}
             label="Productos"
           />
           <NavButton
-            id="invoices"
+            id={btnIds.invoices}
             onClick={handleClick}
-            isActive={false}
+            isActive={activeButton === btnIds.invoices}
             label="Recibos"
           />
           <div className="mt-6">
             <NavButton
-              id="logout"
+              id={btnIds.logout}
               onClick={handleClick}
               isActive={false}
               label="Cerrar sesión"
