@@ -1,11 +1,15 @@
 export interface NavButtonProps {
   isActive: boolean;
   label: "Dashboard" | "Ventas" | "Productos" | "Recibos" | "Cerrar sesión";
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => unknown;
 }
 
-const NavButton = ({ isActive, label }: NavButtonProps) => {
+const NavButton = ({ isActive, label, onClick }: NavButtonProps) => {
   return isActive ? (
-    <button className="btn flex w-44 justify-start bg-purple-50 shadow-lg hover:border-neutral-200 hover:bg-neutral-200">
+    <button
+      onClick={onClick}
+      className="btn flex w-44 justify-start bg-purple-50 shadow-lg hover:border-neutral-200 hover:bg-neutral-200"
+    >
       <div>
         <img
           width={25}
@@ -17,7 +21,10 @@ const NavButton = ({ isActive, label }: NavButtonProps) => {
       <div className="pl-4 text-base font-medium text-indigo-900">{label}</div>
     </button>
   ) : (
-    <button className="btn flex w-44 justify-start border-white bg-white shadow-none hover:border-neutral-200 hover:bg-neutral-200">
+    <button
+      onClick={onClick}
+      className="btn flex w-44 justify-start border-white bg-white shadow-none hover:border-neutral-200 hover:bg-neutral-200"
+    >
       <div>
         <img
           width={20}
