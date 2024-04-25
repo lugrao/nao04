@@ -3,20 +3,19 @@ import CustomerService from "./CustomerService";
 
 const Sidebar = () => {
   return (
-    <div className="flex w-72 flex-col items-center rounded-l-3xl bg-white py-9">
-      <div className="mb-12 mt-0 flex h-20 w-20 justify-center">
+    <div className="flex w-72 flex-col items-center rounded-l-3xl bg-white pt-7">
+      <div className="mb-7 mt-0 flex h-20 w-20 justify-center">
         <img src="/capsule-corp.svg" alt="Capsule Corp. logo" />
       </div>
-
-      <div className="flex flex-col items-center overflow-scroll">
-        <div className="flex flex-col gap-6">
-          <div className="mb-4">
-            <NavButton isActive={true} label="Dashboard" />
+      <div className="flex flex-col items-center overflow-scroll pt-6">
+        <div className="flex flex-col gap-4 pb-7">
+          <div className="mb-3">
+            <NavButton isActive={false} label="Dashboard" />
           </div>
-          <NavButton isActive={false} label="Ventas" />
+          <NavButton isActive={true} label="Ventas" />
           <NavButton isActive={false} label="Productos" />
           <NavButton isActive={false} label="Recibos" />
-          <div className="mt-8">
+          <div className="mt-6">
             <NavButton isActive={false} label="Cerrar sesión" />
           </div>
         </div>
