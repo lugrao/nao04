@@ -14,16 +14,33 @@ const Sidebar = () => {
         <div className="flex flex-col gap-4 pb-7">
           <div className="mb-3">
             <NavButton
+              id="dashboard"
               onClick={handleClick}
               isActive={false}
               label="Dashboard"
             />
           </div>
-          <NavButton onClick={handleClick} isActive={true} label="Ventas" />
-          <NavButton onClick={handleClick} isActive={false} label="Productos" />
-          <NavButton onClick={handleClick} isActive={false} label="Recibos" />
+          <NavButton
+            id="sales"
+            onClick={handleClick}
+            isActive={true}
+            label="Ventas"
+          />
+          <NavButton
+            id="products"
+            onClick={handleClick}
+            isActive={false}
+            label="Productos"
+          />
+          <NavButton
+            id="invoices"
+            onClick={handleClick}
+            isActive={false}
+            label="Recibos"
+          />
           <div className="mt-6">
             <NavButton
+              id="logout"
               onClick={handleClick}
               isActive={false}
               label="Cerrar sesión"
