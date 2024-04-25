@@ -17,7 +17,7 @@ const NavButton = ({ isActive, label }: NavButtonProps) => {
       <div className="pl-4 text-base font-medium text-indigo-900">{label}</div>
     </button>
   ) : (
-    <button className="btn flex w-44 justify-start border-white bg-white hover:border-neutral-200 hover:bg-neutral-200">
+    <button className="btn flex w-44 justify-start border-white bg-white shadow-none hover:border-neutral-200 hover:bg-neutral-200">
       <div>
         <img
           width={20}
