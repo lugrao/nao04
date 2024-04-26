@@ -17,20 +17,35 @@ const btnIds: ButtonIds = {
 
 const Sidebar = () => {
   const [activeButton, setActiveButton] = useState("btn-dashboard");
+  const [isScrolled, setIsScrolled] = useState(false);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
     setActiveButton(id);
     if (id === btnIds.logout) return console.log("logged out");
   };
 
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const div = e.target as HTMLDivElement;
+    if (div.scrollTop > 0) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
   return (
     <div className="flex w-72 flex-col items-center rounded-l-3xl bg-white pt-7">
-      <div className="shadow-bottom z-10 flex h-40 w-full justify-center">
+      <div
+        className={`${isScrolled && "shadow-bottom"} z-10 flex h-40 w-full justify-center`}
+      >
         <div className="mb-9 mt-0 flex h-20 w-20 justify-center">
           <img src="/capsule-corp.svg" alt="Capsule Corp. logo" />
         </div>
       </div>
-      <div className="flex flex-col items-center overflow-scroll pt-6">
+      <div
+        className="flex flex-col items-center overflow-scroll pt-6"
+        onScroll={handleScroll}
+      >
         <div className="flex flex-col gap-4 pb-7">
           <div className="mb-3">
             <NavButton
