@@ -25,8 +25,10 @@ const Sidebar = () => {
 
   return (
     <div className="flex w-72 flex-col items-center rounded-l-3xl bg-white pt-7">
-      <div className="mb-7 mt-0 flex h-20 w-20 justify-center">
-        <img src="/capsule-corp.svg" alt="Capsule Corp. logo" />
+      <div className="shadow-bottom z-10 flex h-40 w-full justify-center">
+        <div className="mb-9 mt-0 flex h-20 w-20 justify-center">
+          <img src="/capsule-corp.svg" alt="Capsule Corp. logo" />
+        </div>
       </div>
       <div className="flex flex-col items-center overflow-scroll pt-6">
         <div className="flex flex-col gap-4 pb-7">
