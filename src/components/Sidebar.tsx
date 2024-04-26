@@ -36,9 +36,9 @@ const Sidebar = () => {
   return (
     <div className="flex w-72 flex-col items-center rounded-l-3xl bg-white pt-7">
       <div
-        className={`${isScrolled && "shadow-bottom"} z-10 flex h-40 w-full justify-center`}
+        className={`${isScrolled && "shadow-bottom"} z-10 flex  w-full justify-center`}
       >
-        <div className="mb-9 mt-0 flex h-20 w-20 justify-center">
+        <div className="mb-7 mt-0 flex h-20 w-20 justify-center">
           <img src="/capsule-corp.svg" alt="Capsule Corp. logo" />
         </div>
       </div>
