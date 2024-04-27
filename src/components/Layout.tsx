@@ -1,4 +1,4 @@
-import { Sidebar } from "./Sidebar.tsx";
+import { Sidebar } from "./sidebar/Sidebar.tsx";
 
 export const Layout = () => {
   return (
