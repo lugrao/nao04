@@ -1,6 +1,6 @@
-import { Sidebar } from "./sidebar/Sidebar.tsx";
+import { Sidebar } from "../components/dashboard/layout/sidebar/Sidebar.tsx";
 
-export const Layout = () => {
+export const Dashboard = () => {
   return (
     <div className="flex h-full w-full items-center justify-center p-2">
       <div className="flex h-full w-full rounded-3xl bg-white p-0.5">
