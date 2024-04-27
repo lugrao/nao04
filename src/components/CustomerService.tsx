@@ -1,4 +1,4 @@
-const CustomerService = () => {
+export const CustomerService = () => {
   return (
     <div className="card bg-base-100">
       <div className="card-body">
@@ -30,5 +30,3 @@ const CustomerService = () => {
     </div>
   );
 };
-
-export default CustomerService;

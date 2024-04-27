@@ -12,7 +12,7 @@ export interface NavButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => unknown;
 }
 
-const NavButton = ({ id, isActive, label, onClick }: NavButtonProps) => {
+export const NavButton = ({ id, isActive, label, onClick }: NavButtonProps) => {
   return isActive ? (
     <button
       id={id}
@@ -47,5 +47,3 @@ const NavButton = ({ id, isActive, label, onClick }: NavButtonProps) => {
     </button>
   );
 };
-
-export default NavButton;

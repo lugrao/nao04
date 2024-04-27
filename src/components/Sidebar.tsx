@@ -1,6 +1,6 @@
 import { useState } from "react";
-import NavButton from "./NavButton";
-import CustomerService from "./CustomerService";
+import { NavButton } from "./NavButton";
+import { CustomerService } from "./CustomerService";
 import { ButtonId } from "./NavButton";
 
 interface ButtonIds {
@@ -15,7 +15,7 @@ const btnIds: ButtonIds = {
   logout: "btn-logout",
 };
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const [activeButton, setActiveButton] = useState("btn-dashboard");
   const [isScrolled, setIsScrolled] = useState(false);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -87,5 +87,3 @@ const Sidebar = () => {
     </div>
   );
 };
-
-export default Sidebar;
