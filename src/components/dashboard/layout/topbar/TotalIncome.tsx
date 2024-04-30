@@ -19,7 +19,15 @@ export const TotalIncome = () => {
           <span className="self-end font-medium text-pink-500">$1.294</span>
         </div>
         <div className="flex gap-1">
-          <span className="self-end">icon</span>
+          <div className="w-4">
+            <img
+              width={20}
+              height={20}
+              src="src/assets/earnings.svg"
+              alt=""
+              className="self-baseline"
+            />
+          </div>
           <span className="self-end  font-medium text-green-500">$1.294</span>
         </div>
       </div>
