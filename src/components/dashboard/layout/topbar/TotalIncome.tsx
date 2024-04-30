@@ -1,6 +1,6 @@
 export const TotalIncome = () => {
   return (
-    <div className="flex w-min gap-7 ">
+    <div className="flex w-min gap-7 p-8">
       <div className="self-end">
         <h2 className=" text-start text-sm">Ingreso total</h2>
         <p className="text-2xl font-semibold leading-none">$71,813.26</p>
