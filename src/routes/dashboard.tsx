@@ -3,7 +3,7 @@ import { Topbar } from "../components/dashboard/layout/topbar/Topbar.tsx";
 
 export const Dashboard = () => {
   return (
-    <div className="flex">
+    <div className="flex w-full">
       <Sidebar />
       <Topbar />
     </div>
