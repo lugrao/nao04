@@ -43,7 +43,7 @@ export const Sidebar = () => {
         </div>
       </div>
       <div
-        className="flex flex-col items-center overflow-scroll pt-6"
+        className="flex flex-col items-center overflow-scroll rounded-bl-3xl pt-6"
         onScroll={handleScroll}
       >
         <div className="flex flex-col gap-4 pb-7">
