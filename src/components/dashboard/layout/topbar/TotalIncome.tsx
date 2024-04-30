@@ -1,3 +1,5 @@
+import { formatUSDAmount } from "../../../../utils/formatUSDAmount";
+
 export interface TotalIncomeProps {
   totalIncome: number;
   expenses: number;
@@ -13,7 +15,9 @@ export const TotalIncome = ({
     <div className="flex w-min gap-7 p-8">
       <div className="self-end">
         <h2 className=" text-start text-sm">Ingreso total</h2>
-        <p className="text-2xl font-semibold leading-none">${totalIncome}</p>
+        <p className="text-2xl font-semibold leading-none">
+          {formatUSDAmount(totalIncome)}
+        </p>
       </div>
       <div className="flex gap-3 self-end">
         <div className="flex h-4 gap-1">
@@ -27,7 +31,7 @@ export const TotalIncome = ({
             />
           </div>
           <span className="self-end font-medium leading-none text-pink-500">
-            ${expenses}
+            {formatUSDAmount(expenses, false)}
           </span>
         </div>
         <div className="flex h-4 gap-1">
@@ -41,7 +45,7 @@ export const TotalIncome = ({
             />
           </div>
           <span className="self-end font-medium  leading-none text-green-500">
-            ${earnings}
+            {formatUSDAmount(earnings, false)}
           </span>
         </div>
       </div>
