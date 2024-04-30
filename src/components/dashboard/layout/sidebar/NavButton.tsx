@@ -35,7 +35,7 @@ export const NavButton = ({ id, isActive, label, onClick }: NavButtonProps) => {
       onClick={onClick}
       className="btn flex w-44 justify-start border-white bg-white shadow-none hover:border-neutral-200 hover:bg-neutral-200"
     >
-      <div>
+      <div className="w-5">
         <img
           width={20}
           height={20}
