@@ -1,5 +1,5 @@
-import { Sidebar } from "components/dashboard/layout/sidebar/Sidebar.tsx";
-import { Topbar } from "components/dashboard/layout/topbar/Topbar.tsx";
+import { Sidebar } from "src/components";
+import { Topbar } from "src/components";
 
 export const Dashboard = () => {
   return (
