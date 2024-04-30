@@ -34,7 +34,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="flex w-72 flex-col items-center rounded-l-3xl bg-white pt-7">
+    <div className="flex w-72 flex-col items-center  bg-white pt-7">
       <div
         className={`${isScrolled && "shadow-bottom"} z-10 flex  w-full justify-center`}
       >
@@ -43,7 +43,7 @@ export const Sidebar = () => {
         </div>
       </div>
       <div
-        className="flex flex-col items-center overflow-scroll rounded-bl-3xl pt-6"
+        className="flex flex-col items-center overflow-scroll  pt-6"
         onScroll={handleScroll}
       >
         <div className="flex flex-col gap-4 pb-7">
