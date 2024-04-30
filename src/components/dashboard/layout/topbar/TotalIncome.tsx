@@ -1,4 +1,4 @@
-import { formatUSDAmount } from "../../../../utils/formatUSDAmount";
+import { formatUSDAmount } from "utils/formatUSDAmount";
 
 export interface TotalIncomeProps {
   totalIncome: number;

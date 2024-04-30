@@ -1,5 +1,5 @@
-import "./root.css";
-import { Dashboard } from "./dashboard";
+import "routes/root.css";
+import { Dashboard } from "routes/dashboard";
 
 export const Root = () => {
   return (
