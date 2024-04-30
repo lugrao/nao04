@@ -19,14 +19,12 @@ export const NavButton = ({ id, isActive, label, onClick }: NavButtonProps) => {
       onClick={onClick}
       className="btn flex w-44 justify-start bg-purple-50 shadow-lg hover:border-neutral-200 hover:bg-neutral-200"
     >
-      <div>
-        <img
-          width={25}
-          height={25}
-          src={`src/assets/${label.toLowerCase()}.svg`}
-          alt={`Ícono de ${label}`}
-        />
-      </div>
+      <img
+        width={25}
+        height={25}
+        src={`src/assets/${label.toLowerCase()}.svg`}
+        alt={`Ícono de ${label}`}
+      />
       <div className="pl-4 text-base font-medium text-indigo-900">{label}</div>
     </button>
   ) : (
