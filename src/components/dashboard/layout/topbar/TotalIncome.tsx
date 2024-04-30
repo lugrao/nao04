@@ -1,11 +1,11 @@
 export const TotalIncome = () => {
   return (
     <div className="flex w-min gap-7 ">
-      <div>
+      <div className="self-end">
         <h2 className=" text-start text-sm">Ingreso total</h2>
         <p className="text-2xl font-semibold leading-none">$71,813.26</p>
       </div>
-      <div className="flex gap-3">
+      <div className="flex gap-3 self-end">
         <div className="flex h-4 gap-1">
           <div className="flex w-4">
             <img
