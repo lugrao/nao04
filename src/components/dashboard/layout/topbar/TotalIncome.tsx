@@ -1,9 +1,19 @@
-export const TotalIncome = () => {
+export interface TotalIncomeProps {
+  totalIncome: number;
+  expenses: number;
+  earnings: number;
+}
+
+export const TotalIncome = ({
+  totalIncome,
+  expenses,
+  earnings,
+}: TotalIncomeProps) => {
   return (
     <div className="flex w-min gap-7 p-8">
       <div className="self-end">
         <h2 className=" text-start text-sm">Ingreso total</h2>
-        <p className="text-2xl font-semibold leading-none">$71,813.26</p>
+        <p className="text-2xl font-semibold leading-none">${totalIncome}</p>
       </div>
       <div className="flex gap-3 self-end">
         <div className="flex h-4 gap-1">
@@ -17,7 +27,7 @@ export const TotalIncome = () => {
             />
           </div>
           <span className="self-end font-medium leading-none text-pink-500">
-            $1.294
+            ${expenses}
           </span>
         </div>
         <div className="flex h-4 gap-1">
@@ -31,7 +41,7 @@ export const TotalIncome = () => {
             />
           </div>
           <span className="self-end font-medium  leading-none text-green-500">
-            $1.294
+            ${earnings}
           </span>
         </div>
       </div>
