@@ -21,6 +21,14 @@ export interface NavButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => unknown;
 }
 
+const sectionsByLabel: Record<Label, Section> = {
+  Dashboard: "dashboard",
+  Ventas: "sales",
+  Productos: "products",
+  Recibos: "invoices",
+  "Cerrar sesión": "logout",
+};
+
 export const NavButton = ({ id, isActive, label, onClick }: NavButtonProps) => {
   return isActive ? (
     <button
@@ -32,7 +40,7 @@ export const NavButton = ({ id, isActive, label, onClick }: NavButtonProps) => {
         <img
           width={25}
           height={25}
-          src={`src/assets/${label.toLowerCase()}.svg`}
+          src={`src/assets/${sectionsByLabel[label]}.svg`}
           alt={`Ícono de ${label}`}
         />
       </div>
@@ -48,7 +56,7 @@ export const NavButton = ({ id, isActive, label, onClick }: NavButtonProps) => {
         <img
           width={20}
           height={20}
-          src={`src/assets/${label.toLowerCase()}-inactive.svg`}
+          src={`src/assets/${sectionsByLabel[label]}-inactive.svg`}
           alt={`Ícono de ${label}`}
         />
       </div>
