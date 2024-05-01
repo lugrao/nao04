@@ -1,14 +1,23 @@
-export type ButtonId =
-  | "btn-dashboard"
-  | "btn-sales"
-  | "btn-products"
-  | "btn-invoices"
-  | "btn-logout";
+export type Section =
+  | "dashboard"
+  | "sales"
+  | "products"
+  | "invoices"
+  | "logout";
+
+export type Label =
+  | "Dashboard"
+  | "Ventas"
+  | "Productos"
+  | "Recibos"
+  | "Cerrar sesión";
+
+export type ButtonId = `btn-${Section}`;
 
 export interface NavButtonProps {
   id?: ButtonId;
   isActive: boolean;
-  label: "Dashboard" | "Ventas" | "Productos" | "Recibos" | "Cerrar sesión";
+  label: Label;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => unknown;
 }
 
