@@ -12,7 +12,7 @@ export const TotalIncome = ({
   earnings,
 }: TotalIncomeProps) => {
   return (
-    <div className="flex w-min gap-7 p-8">
+    <div className="flex h-max w-min gap-7 p-2">
       <div className="self-end">
         <h2 className=" text-start text-sm">Ingreso total</h2>
         <p className="text-2xl font-semibold leading-none">
