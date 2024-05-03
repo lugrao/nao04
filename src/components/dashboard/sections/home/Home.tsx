@@ -1,3 +1,3 @@
 export const Home = () => {
-  return <div></div>;
+  return <div className="h-full overflow-y-scroll"></div>;
 };
