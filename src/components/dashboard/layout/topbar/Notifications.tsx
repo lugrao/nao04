@@ -1,6 +1,6 @@
 export const Notifications = () => {
   return (
-    <div className="flex gap-12">
+    <div className="flex gap-12 p-2">
       <div className="w-7">
         <img
           width={26}
