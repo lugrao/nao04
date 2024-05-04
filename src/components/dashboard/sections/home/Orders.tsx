@@ -7,18 +7,30 @@ export interface OrdersProps {
 
 const orders: Record<
   OrderStatus,
-  { color: string; icon: string; text: string }
+  { gradientColors: string; icon: string; text: string }
 > = {
-  sent: { color: "blue", icon: "truck", text: "enviados" },
-  pending: { color: "pink", icon: "kart", text: "pendientes" },
-  new: { color: "purple", icon: "bag", text: "nuevos" },
+  sent: {
+    gradientColors: "from-blue-400 to-blue-600",
+    icon: "truck",
+    text: "enviados",
+  },
+  pending: {
+    gradientColors: "from-red-400 to-pink-500",
+    icon: "kart",
+    text: "pendientes",
+  },
+  new: {
+    gradientColors: "from-fuchsia-500 to-purple-600",
+    icon: "bag",
+    text: "nuevos",
+  },
 };
 
 export const Orders = ({ status, amount }: OrdersProps) => {
-  const color = orders[status].color;
+  const gradientColors = orders[status].gradientColors;
   return (
     <div
-      className={`relative h-32 w-80 rounded-2xl bg-gradient-to-br text-white from-${color}-400 to-${color}-500`}
+      className={`relative h-32 w-80 rounded-2xl bg-gradient-to-br text-white  ${gradientColors}`}
     >
       <h3 className="absolute left-6 top-5 text-xl font-bold">
         Pedidos {orders[status].text}
