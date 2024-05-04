@@ -15,12 +15,17 @@ const btnIds: ButtonIds = {
   logout: "btn-logout",
 };
 
-export const Sidebar = () => {
+interface SidebarProps {
+  setActiveSection: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const Sidebar = ({ setActiveSection }: SidebarProps) => {
   const [activeButton, setActiveButton] = useState("btn-dashboard");
   const [isScrolled, setIsScrolled] = useState(false);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
     setActiveButton(id);
+    setActiveSection(id.substring(4));
     if (id === btnIds.logout) return console.log("logged out");
   };
 
