@@ -7,27 +7,32 @@ export interface OrdersProps {
 
 const orders: Record<
   OrderStatus,
-  { gradientColors: string; icon: string; text: string }
+  {
+    gradientColors: string;
+    img: { filename: string; alt: string };
+    text: string;
+  }
 > = {
   sent: {
     gradientColors: "from-blue-400 to-blue-600",
-    icon: "truck",
+    img: { filename: "truck.svg", alt: "Camión" },
     text: "enviados",
   },
   pending: {
     gradientColors: "from-red-400 to-pink-500",
-    icon: "cart",
+    img: { filename: "cart.svg", alt: "Carrito de compras" },
     text: "pendientes",
   },
   new: {
     gradientColors: "from-fuchsia-500 to-purple-600",
-    icon: "bag",
+    img: { filename: "bag.svg", alt: "Bolsa de compras" },
     text: "nuevos",
   },
 };
 
 export const Orders = ({ status, amount }: OrdersProps) => {
   const gradientColors = orders[status].gradientColors;
+  const img = orders[status].img;
   return (
     <div
       className={`relative h-32 w-80 rounded-2xl bg-gradient-to-br text-white  ${gradientColors}`}
@@ -36,7 +41,7 @@ export const Orders = ({ status, amount }: OrdersProps) => {
         Pedidos {orders[status].text}
       </h3>
       <div className="absolute bottom-[-0.5rem] left-2 ">
-        <img src={`src/assets/${orders[status].icon}.svg`} alt="Camión" />
+        <img src={`src/assets/${img.filename}`} alt={img.alt} />
       </div>
       <h4 className="absolute bottom-5 right-5 text-6xl font-semibold">
         {amount}
