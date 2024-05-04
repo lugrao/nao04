@@ -16,7 +16,7 @@ const orders: Record<
   },
   pending: {
     gradientColors: "from-red-400 to-pink-500",
-    icon: "kart",
+    icon: "cart",
     text: "pendientes",
   },
   new: {
