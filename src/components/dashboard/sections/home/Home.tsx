@@ -1,4 +1,5 @@
 import { Orders } from "./Orders";
+import { LineChart } from "./LineChart";
 
 export const Home = () => {
   return (
@@ -7,6 +8,15 @@ export const Home = () => {
         <Orders status="sent" amount={39} />
         <Orders status="pending" amount={15} />
         <Orders status="new" amount={28} />
+      </div>
+
+      <div className="flex flex-col gap-10">
+        <LineChart
+          category="sales"
+          totalAmount={12434.53}
+          title="Ventas 2024"
+        />
+        <LineChart category="customers" totalAmount={1613} title="Clientes" />
       </div>
     </div>
   );
