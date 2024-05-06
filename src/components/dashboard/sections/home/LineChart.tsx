@@ -1,6 +1,7 @@
 import { data } from "./chartData";
 import { ResponsiveLine } from "@nivo/line";
 import { formatUSDAmount } from "utils/formatUSDAmount";
+import { getSpanishDate } from "utils/getSpanishDate";
 
 export type ChartCategory = "sales" | "customers";
 
@@ -20,10 +21,14 @@ export const LineChart = ({ category, title, totalAmount }: LineChartProps) => {
     <div className="flex h-[26rem] w-5/12 flex-col justify-center rounded-2xl bg-white p-6">
       <div className="flex items-end justify-between pt-4">
         <h2 className="text-lg font-bold leading-none">{title}</h2>
-        <h3 className={`text-2xl font-semibold leading-none ${chart[category].color.amount}`}>
+        <h3
+          className={`text-2xl font-semibold leading-none ${chart[category].color.amount}`}
+        >
           {category === "sales" ? formatUSDAmount(totalAmount) : totalAmount}
         </h3>
-        <span className="text-sm leading-none text-gray-400">27 Abr 2024</span>
+        <span className="text-sm leading-none text-gray-400">
+          {getSpanishDate()}
+        </span>
       </div>
       <ResponsiveLine
         data={data}
