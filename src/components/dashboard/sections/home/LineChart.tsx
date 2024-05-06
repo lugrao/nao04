@@ -18,7 +18,7 @@ const chart = {
 
 export const LineChart = ({ category, title, totalAmount }: LineChartProps) => {
   return (
-    <div className="flex h-[26rem] w-5/12 flex-col justify-center rounded-2xl bg-white p-6">
+    <div className="flex h-[26rem] w-5/12 flex-col justify-center rounded-2xl bg-white p-6 shadow-md">
       <div className="flex items-end justify-between pt-4">
         <h2 className="text-lg font-bold leading-none">{title}</h2>
         <h3
