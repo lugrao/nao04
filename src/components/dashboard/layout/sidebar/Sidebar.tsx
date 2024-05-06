@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavButton } from "./NavButton";
 import { CustomerService } from "./CustomerService";
 import { ButtonId } from "./NavButton";
+import { useIsScrolled } from "utils/useIsScrolled";
 
 interface ButtonIds {
   [K: string]: ButtonId;
@@ -20,22 +21,14 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({ setActiveSection }: SidebarProps) => {
+  const [isScrolled, handleScroll] = useIsScrolled();
   const [activeButton, setActiveButton] = useState("btn-dashboard");
-  const [isScrolled, setIsScrolled] = useState(false);
+
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
     setActiveButton(id);
     setActiveSection(id.substring(4));
     if (id === btnIds.logout) return console.log("logged out");
-  };
-
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const div = e.target as HTMLDivElement;
-    if (div.scrollTop > 0) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
   };
 
   return (
