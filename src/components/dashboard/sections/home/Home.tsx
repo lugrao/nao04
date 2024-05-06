@@ -1,9 +1,13 @@
 import { Orders } from "./Orders";
 import { LineChart } from "./LineChart";
 
-export const Home = () => {
+export interface HomeProps {
+  onScroll: (e: React.UIEvent<HTMLDivElement>) => void;
+}
+
+export const Home = ({ onScroll }: HomeProps) => {
   return (
-    <div className="h-full overflow-y-scroll">
+    <div className="h-full overflow-y-scroll" onScroll={onScroll}>
       <div className="flex justify-evenly gap-3 px-4 py-10">
         <Orders status="sent" amount={39} />
         <Orders status="pending" amount={15} />
