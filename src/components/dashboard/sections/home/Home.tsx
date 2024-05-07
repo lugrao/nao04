@@ -4,6 +4,7 @@ import { BestSellingProductsTable } from "./BestSellingProductsTable";
 import { LatestSalesTable } from "./LatestSalesTable";
 import { data as bestSellingProductsData } from "./bestSellingProductsData";
 import { data as latestSalesData } from "./latestSalesData";
+import { salesData, customersData } from "./chartData";
 
 export interface HomeProps {
   onScroll: (e: React.UIEvent<HTMLDivElement>) => void;
@@ -20,11 +21,17 @@ export const Home = ({ onScroll }: HomeProps) => {
       <div className="flex justify-center gap-10 px-5 py-10">
         <div className="flex flex-col gap-10">
           <LineChart
+            data={salesData}
             category="sales"
             totalAmount={12434.53}
             title="Ventas 2024"
           />
-          <LineChart category="customers" totalAmount={1613} title="Clientes" />
+          <LineChart
+            data={customersData}
+            category="customers"
+            totalAmount={1613}
+            title="Clientes"
+          />
         </div>
         <div className="flex flex-col gap-10">
           <BestSellingProductsTable data={bestSellingProductsData} />
