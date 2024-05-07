@@ -44,7 +44,7 @@ export const LineChart = ({
         yScale={{
           type: "linear",
           min: 0,
-          max: 200000,
+          max: category === "sales" ? 200000 : 2000,
           stacked: true,
           reverse: false,
         }}
