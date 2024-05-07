@@ -1,7 +1,7 @@
-import { data } from "./chartData";
 import { ResponsiveLine } from "@nivo/line";
 import { formatUSDAmount } from "utils/formatUSDAmount";
 import { getSpanishDate } from "utils/getSpanishDate";
+import { ChartData } from "./chartData";
 
 export type ChartCategory = "sales" | "customers";
 
@@ -9,6 +9,7 @@ export interface LineChartProps {
   category: ChartCategory;
   title: string;
   totalAmount: number;
+  data: ChartData[];
 }
 
 const chart = {
@@ -16,7 +17,12 @@ const chart = {
   customers: { color: { amount: "text-sky-400", lines: "#7dd3fc" } },
 };
 
-export const LineChart = ({ category, title, totalAmount }: LineChartProps) => {
+export const LineChart = ({
+  category,
+  title,
+  totalAmount,
+  data,
+}: LineChartProps) => {
   return (
     <div className="flex h-[36rem] w-[45rem] flex-col justify-center rounded-2xl bg-white p-6 shadow-md">
       <div className="flex items-end justify-between pt-4">
