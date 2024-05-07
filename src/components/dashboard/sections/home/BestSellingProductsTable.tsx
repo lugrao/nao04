@@ -5,7 +5,7 @@ export interface BestSellingProductsTableProps {
 export const BestSellingProductsTable = ({
   data,
 }: BestSellingProductsTableProps) => (
-  <div className="w-[38rem] overflow-x-auto rounded-2xl bg-white pb-3 shadow-md">
+  <div className="w-[38rem] overflow-x-auto rounded-2xl bg-white pb-4 shadow-md">
     <div className="flex justify-between px-7 pt-7">
       <h2 className="text-lg font-medium">Productos más vendidos</h2>
       <a href="" className="text-sm font-semibold  text-blue-600">
@@ -31,7 +31,7 @@ export const BestSellingProductsTable = ({
             alt: isNegativePercentage ? "Flecha abajo" : "Flecha arriba",
           };
           return (
-            <tr>
+            <tr key={product.productName}>
               <th className="pl-10">{index + 1}</th>
               <td className="text-center">{product.productName}</td>
               <td className="pr-10">
