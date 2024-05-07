@@ -26,3 +26,15 @@ body {
   min-height: 100vh;
   height: 100%;
 }
+
+@media (max-width: 1650px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1450px) {
+  :root {
+    font-size: 12px;
+  }
+}
