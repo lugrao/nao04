@@ -8,8 +8,8 @@ clients.forEach((client) =>
   data.push({
     clientName: client,
     dateOfPurchase: generateRandomDate(2020, 2024),
-    invoiceNumber: 1,
-    status: "Pagado",
-    totalAmount: 10,
+    invoiceNumber: Math.floor(Math.random() * 100000000),
+    status: Math.random() < 0.5 ? "Pagado" : "Pendiente",
+    totalAmount: Math.floor(Math.random() * 10000),
   }),
 );
