@@ -7,7 +7,7 @@ export const data: InvoicesTableData = [];
 clients.forEach((client) =>
   data.push({
     clientName: client,
-    dateOfPurchase: generateRandomDate(),
+    dateOfPurchase: generateRandomDate(2020, 2024),
     invoiceNumber: 1,
     status: "Pagado",
     totalAmount: 10,
