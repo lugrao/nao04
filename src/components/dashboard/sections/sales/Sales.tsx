@@ -1,7 +1,10 @@
 import { WorldMap } from "./WorldMap";
+import { SalesByCountryTable } from "./SalesByCountryTable";
+import { data } from "./salesByCountryTableData";
 
 export const Sales = () => (
-  <div className="overflow-scroll flex justify-center">
+  <div className="flex flex-col items-center overflow-scroll gap-10">
     <WorldMap />
+    <SalesByCountryTable data={data} />
   </div>
 );
