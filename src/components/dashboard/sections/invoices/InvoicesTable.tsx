@@ -32,9 +32,13 @@ export const InvoicesTable = ({ data }: InvoicesTableProps) => (
           return (
             <tr key={invoice.invoiceNumber}>
               <td className="pl-14">{invoice.invoiceNumber}</td>
-              <td className="">{invoice.clientName}</td>
-              <td className="">{invoice.dateOfPurchase}</td>
-              <td className="">{invoice.status}</td>
+              <td>{invoice.clientName}</td>
+              <td>{invoice.dateOfPurchase}</td>
+              <td
+                className={`${invoice.status === "Pendiente" ? "text-orange-700" : "text-lime-700"}`}
+              >
+                {invoice.status}
+              </td>
               <td className="pr-14">
                 {formatUSDAmount(invoice.totalAmount, false)}
               </td>
