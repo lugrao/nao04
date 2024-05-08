@@ -1,6 +1,6 @@
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { data } from "./worldMapData";
-import worldCountries from "./world_countries.json";
+import worldCountries from "./worldCountries.json";
 
 export const WorldMap = () => (
   <div className="w-[65rem] rounded-2xl  bg-white px-10 lg:h-[45rem] 2xl:h-[40rem]">
