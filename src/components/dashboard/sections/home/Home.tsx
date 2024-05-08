@@ -6,11 +6,11 @@ import { data as bestSellingProductsData } from "./bestSellingProductsData";
 import { data as latestSalesData } from "./latestSalesData";
 import { salesData, customersData } from "./chartData";
 
-export interface HomeProps {
+export interface SectionProps {
   onScroll: (e: React.UIEvent<HTMLDivElement>) => void;
 }
 
-export const Home = ({ onScroll }: HomeProps) => {
+export const Home = ({ onScroll }: SectionProps) => {
   return (
     <div className="h-full overflow-y-scroll" onScroll={onScroll}>
       <div className="flex justify-center gap-10 px-4 py-10">
