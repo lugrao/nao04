@@ -30,7 +30,9 @@ export const SalesByCountryTable = ({ data }: SalesByCountryTableProps) => (
             <tr key={country.countryName}>
               <td className="pl-14">{country.countryName}</td>
               <td>{country.numberOfSales}</td>
-              <td className="pr-14">{formatUSDAmount(country.totalIncome)}</td>
+              <td className="pr-14">
+                {formatUSDAmount(country.totalIncome, false)}
+              </td>
             </tr>
           );
         })}

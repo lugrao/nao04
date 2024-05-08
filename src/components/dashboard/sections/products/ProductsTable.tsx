@@ -32,7 +32,9 @@ export const ProductsTable = ({ data }: ProductsTableProps) => (
               <td className="pl-14">{product.product}</td>
               <td className="">{product.category}</td>
               <td className="">{product.numberOfSales}</td>
-              <td className="pr-14">{formatUSDAmount(product.totalIncome)}</td>
+              <td className="pr-14">
+                {formatUSDAmount(product.totalIncome, false)}
+              </td>
             </tr>
           );
         })}
