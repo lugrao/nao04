@@ -1,1 +1,7 @@
-export const Products = () => <div></div>;
+import { ProductsTable } from "./ProductsTable";
+
+export const Products = () => (
+  <div>
+    <ProductsTable />
+  </div>
+);
