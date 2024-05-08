@@ -4,6 +4,7 @@ import { Topbar } from "src/components";
 import { Home } from "src/components";
 import { Sales } from "src/components";
 import { Products } from "src/components";
+import { Invoices } from "src/components";
 import { useIsScrolled } from "src/utils/useIsScrolled";
 
 export const Dashboard = () => {
@@ -17,6 +18,7 @@ export const Dashboard = () => {
         {activeSection === "dashboard" && <Home onScroll={handleScroll} />}
         {activeSection === "sales" && <Sales onScroll={handleScroll} />}
         {activeSection === "products" && <Products onScroll={handleScroll} />}
+        {activeSection === "invoices" && <Invoices onScroll={handleScroll} />}
       </div>
     </div>
   );
