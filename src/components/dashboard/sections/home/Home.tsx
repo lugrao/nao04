@@ -19,7 +19,7 @@ export const Home = ({ onScroll }: SectionProps) => {
         <Orders status="new" amount={28} />
       </div>
       <div className="flex flex-col items-center gap-10 px-5 py-10 lg:flex-row lg:justify-center">
-        <div className="flex flex-col gap-10">
+        <div className="flex w-full flex-col items-center gap-10">
           <LineChart
             data={salesData}
             category="sales"
