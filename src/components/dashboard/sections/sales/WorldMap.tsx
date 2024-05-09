@@ -28,11 +28,11 @@ export const WorldMap = ({ data }: WorldMapProps) => {
 
   if (mapData === undefined)
     return (
-      <div className="w-[65rem] rounded-2xl  bg-white px-10 shadow-md lg:h-[45rem] 2xl:h-[40rem]"></div>
+      <div className="rounded-2xl bg-white px-10 shadow-md  md:w-[75rem] lg:h-[50rem] lg:w-[75rem] 2xl:h-[40rem] 2xl:w-[65rem]"></div>
     );
 
   return (
-    <div className="w-[65rem] rounded-2xl  bg-white px-10 shadow-md lg:h-[45rem] 2xl:h-[40rem]">
+    <div className="rounded-2xl bg-white px-10 shadow-md  md:w-[75rem] lg:h-[50rem] lg:w-[75rem] 2xl:h-[40rem] 2xl:w-[65rem]">
       <ResponsiveChoropleth
         data={mapData}
         features={worldCountries.features}

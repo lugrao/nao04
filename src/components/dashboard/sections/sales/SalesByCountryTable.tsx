@@ -12,7 +12,7 @@ export interface SalesByCountryTableProps {
 }
 
 export const SalesByCountryTable = ({ data }: SalesByCountryTableProps) => (
-  <div className="w-[65rem] rounded-2xl bg-white pb-4 shadow-md">
+  <div className="rounded-2xl bg-white pb-4 shadow-md md:w-[75rem] lg:w-[75rem] 2xl:w-[65rem]">
     <div className="flex justify-between pb-7 pl-11 pt-7">
       <h2 className="text-lg font-bold">Ventas por país</h2>
     </div>
