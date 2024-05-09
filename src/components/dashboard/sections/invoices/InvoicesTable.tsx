@@ -13,7 +13,7 @@ export interface InvoicesTableProps {
 }
 
 export const InvoicesTable = ({ data }: InvoicesTableProps) => (
-  <div className="w-[70rem] rounded-2xl bg-white pb-4 shadow-md">
+  <div className="xs-max:overflow-scroll w-full max-w-[70rem] rounded-2xl bg-white pb-4 shadow-md">
     <div className="flex justify-between pb-7 pl-11 pt-7">
       <h2 className="text-lg font-bold">Recibos</h2>
     </div>
