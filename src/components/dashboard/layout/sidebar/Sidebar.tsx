@@ -3,17 +3,27 @@ import { NavButton } from "./NavButton";
 import { CustomerService } from "./CustomerService";
 import { ButtonId } from "./NavButton";
 import { useIsScrolled } from "utils/useIsScrolled";
+import { Section } from "./NavButton";
+import { Label } from "./NavButton";
 
 interface ButtonIds {
   [K: string]: ButtonId;
 }
 
-const btnIds: ButtonIds = {
+export const btnIds: ButtonIds = {
   dashboard: "btn-dashboard",
   sales: "btn-sales",
   products: "btn-products",
   invoices: "btn-invoices",
   logout: "btn-logout",
+};
+
+export const labelBySection: Record<Section, Label> = {
+  dashboard: "Dashboard",
+  sales: "Ventas",
+  products: "Productos",
+  invoices: "Recibos",
+  logout: "Cerrar sesión",
 };
 
 interface SidebarProps {
@@ -45,40 +55,28 @@ export const Sidebar = ({ setActiveSection }: SidebarProps) => {
         onScroll={handleScroll}
       >
         <div className="flex flex-col gap-4 pb-7">
-          <div className="mb-3">
-            <NavButton
-              id={btnIds.dashboard}
-              onClick={handleClick}
-              isActive={activeButton === btnIds.dashboard}
-              label="Dashboard"
-            />
-          </div>
-          <NavButton
-            id={btnIds.sales}
-            onClick={handleClick}
-            isActive={activeButton === btnIds.sales}
-            label="Ventas"
-          />
-          <NavButton
-            id={btnIds.products}
-            onClick={handleClick}
-            isActive={activeButton === btnIds.products}
-            label="Productos"
-          />
-          <NavButton
-            id={btnIds.invoices}
-            onClick={handleClick}
-            isActive={activeButton === btnIds.invoices}
-            label="Recibos"
-          />
-          <div className="mt-6">
-            <NavButton
-              id={btnIds.logout}
-              onClick={handleClick}
-              isActive={false}
-              label="Cerrar sesión"
-            />
-          </div>
+          {Object.keys(btnIds).map((section) => {
+            return (
+              <div
+                className={`
+              ${section == "dashboard" && "mb-3"}
+              ${section == "logout" && "mt-6"}
+              `}
+              >
+                <NavButton
+                  withText={true}
+                  id={btnIds[section]}
+                  onClick={handleClick}
+                  isActive={
+                    section === "logout"
+                      ? false
+                      : activeButton === btnIds[section]
+                  }
+                  label={labelBySection[section as Section]}
+                />
+              </div>
+            );
+          })}
         </div>
         <CustomerService />
       </div>
