@@ -19,6 +19,7 @@ export interface NavButtonProps {
   isActive: boolean;
   label: Label;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => unknown;
+  withText: boolean;
 }
 
 const sectionsByLabel: Record<Label, Section> = {
@@ -29,12 +30,20 @@ const sectionsByLabel: Record<Label, Section> = {
   "Cerrar sesión": "logout",
 };
 
-export const NavButton = ({ id, isActive, label, onClick }: NavButtonProps) => {
+export const NavButton = ({
+  id,
+  isActive,
+  label,
+  onClick,
+  withText,
+}: NavButtonProps) => {
   return isActive ? (
     <button
       id={id}
       onClick={onClick}
-      className="btn flex w-44 justify-start bg-purple-50 shadow-lg hover:border-neutral-200 hover:bg-neutral-200"
+      className={`btn flex  bg-purple-50 shadow-lg hover:border-neutral-200 hover:bg-neutral-200
+        ${withText ? "w-44 justify-start" : "w-min"}      
+      `}
     >
       <div className="w-6">
         <img
@@ -44,13 +53,19 @@ export const NavButton = ({ id, isActive, label, onClick }: NavButtonProps) => {
           alt={`Ícono de ${label}`}
         />
       </div>
-      <div className="pl-4 text-base font-medium text-indigo-900">{label}</div>
+      {withText && (
+        <div className="pl-4 text-base font-medium text-indigo-900">
+          {label}
+        </div>
+      )}
     </button>
   ) : (
     <button
       id={id}
       onClick={onClick}
-      className="btn flex w-44 justify-start border-white bg-white shadow-none hover:border-neutral-200 hover:bg-neutral-200"
+      className={`btn flex border-white bg-white shadow-none hover:border-neutral-200 hover:bg-neutral-200
+        ${withText ? "w-44 justify-start" : "w-min"}      
+      `}
     >
       <div className="w-5">
         <img
@@ -60,7 +75,9 @@ export const NavButton = ({ id, isActive, label, onClick }: NavButtonProps) => {
           alt={`Ícono de ${label}`}
         />
       </div>
-      <div className="pl-4 text-sm font-medium text-indigo-300">{label}</div>
+      {withText && (
+        <div className="pl-4 text-sm font-medium text-indigo-300">{label}</div>
+      )}
     </button>
   );
 };
