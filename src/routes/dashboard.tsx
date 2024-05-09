@@ -21,7 +21,7 @@ export const Dashboard = () => {
           {width <= 1024 && (
             <TopbarNav
               setActiveSection={setActiveSection}
-              buttonsWithText={width >= 565}
+              buttonsWithText={width >= 630}
             />
           )}
           <Topbar viewportWidth={width} shadowBottom={isScrolled} />
