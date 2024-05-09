@@ -36,6 +36,7 @@ export const TopbarNav = ({
               isActive={
                 section === "logout" ? false : activeButton === btnIds[section]
               }
+              isMobile={true}
               label={labelBySection[section as Section]}
             />
           );

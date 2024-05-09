@@ -17,6 +17,7 @@ export type ButtonId = `btn-${Section}`;
 export interface NavButtonProps {
   id?: ButtonId;
   isActive: boolean;
+  isMobile: boolean;
   label: Label;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => unknown;
   withText: boolean;
@@ -33,6 +34,7 @@ const sectionsByLabel: Record<Label, Section> = {
 export const NavButton = ({
   id,
   isActive,
+  isMobile,
   label,
   onClick,
   withText,
@@ -41,8 +43,9 @@ export const NavButton = ({
     <button
       id={id}
       onClick={onClick}
-      className={`btn flex  bg-purple-50 shadow-lg hover:border-neutral-200 hover:bg-neutral-200
+      className={`btn flex  bg-purple-50 hover:border-neutral-200 hover:bg-neutral-200
         ${withText ? "w-44 justify-start" : "w-min"}      
+        ${isMobile ? "shadow-sm" : "shadow-lg"}
       `}
     >
       <div className="w-6">

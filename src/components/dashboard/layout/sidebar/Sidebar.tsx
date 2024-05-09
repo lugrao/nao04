@@ -72,6 +72,7 @@ export const Sidebar = ({ setActiveSection }: SidebarProps) => {
                       ? false
                       : activeButton === btnIds[section]
                   }
+                  isMobile={false}
                   label={labelBySection[section as Section]}
                 />
               </div>
