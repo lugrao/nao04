@@ -11,7 +11,7 @@ export const Sales = ({
     className="flex flex-col items-center gap-10 overflow-scroll px-4 py-10"
     onScroll={onScroll}
   >
-    {viewportWidth > 767 && (
+    {viewportWidth > 1024 && (
       <div>
         <WorldMap data={data} />
       </div>
