@@ -22,20 +22,25 @@ export const TopbarNav = ({
     if (id === btnIds.logout) return console.log("logged out");
   };
   return (
-    <div className="flex w-full justify-around bg-white p-3">
-      {Object.keys(btnIds).map((section) => {
-        return (
-          <NavButton
-            withText={buttonsWithText}
-            id={btnIds[section]}
-            onClick={handleClick}
-            isActive={
-              section === "logout" ? false : activeButton === btnIds[section]
-            }
-            label={labelBySection[section as Section]}
-          />
-        );
-      })}
+    <div className="flex items-center bg-white p-3">
+      <div className="mr-5 h-10 w-10">
+        <img src="/capsule-corp.svg" alt="Capsule Corp. logo" />
+      </div>
+      <div className="flex w-full justify-around">
+        {Object.keys(btnIds).map((section) => {
+          return (
+            <NavButton
+              withText={buttonsWithText}
+              id={btnIds[section]}
+              onClick={handleClick}
+              isActive={
+                section === "logout" ? false : activeButton === btnIds[section]
+              }
+              label={labelBySection[section as Section]}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
