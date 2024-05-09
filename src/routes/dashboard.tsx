@@ -16,9 +16,8 @@ export const Dashboard = () => {
     width && (
       <div className="flex w-full">
         {width > 1024 && <Sidebar setActiveSection={setActiveSection} />}
-
         <div className="flex w-full flex-col">
-          <Topbar shadowBottom={isScrolled} />
+          <Topbar viewportWidth={width} shadowBottom={isScrolled} />
           {activeSection === "dashboard" && <Home onScroll={handleScroll} />}
           {activeSection === "sales" && (
             <Sales viewportWidth={width} onScroll={handleScroll} />
