@@ -38,3 +38,9 @@ body {
     font-size: 12px;
   }
 }
+
+@media (max-width: 1250px) {
+  :root {
+    font-size: 10px;
+  }
+}
