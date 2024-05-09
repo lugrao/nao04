@@ -12,7 +12,7 @@ export interface ProductsTableProps {
 }
 
 export const ProductsTable = ({ data }: ProductsTableProps) => (
-  <div className="w-[70rem] rounded-2xl bg-white pb-4 shadow-md">
+  <div className="w-full max-w-[70rem] rounded-2xl bg-white pb-4 shadow-md">
     <div className="flex justify-between pb-7 pl-11 pt-7">
       <h2 className="text-lg font-bold">Productos</h2>
     </div>
