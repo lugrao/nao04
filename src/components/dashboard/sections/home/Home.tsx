@@ -33,7 +33,7 @@ export const Home = ({ onScroll }: SectionProps) => {
             title="Clientes"
           />
         </div>
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-10 w-full items-center">
           <BestSellingProductsTable data={bestSellingProductsData} />
           <LatestSalesTable data={latestSalesData} />
         </div>

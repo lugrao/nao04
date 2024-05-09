@@ -5,7 +5,7 @@ export interface LatestSalesTableProps {
 }
 
 export const LatestSalesTable = ({ data }: LatestSalesTableProps) => (
-  <div className="w-[38rem] overflow-x-auto rounded-2xl bg-white pb-4 shadow-md">
+  <div className="w-full max-w-[45rem] overflow-x-auto rounded-2xl bg-white pb-4 shadow-md lg:w-[38rem]">
     <div className="flex justify-between px-7 pb-10 pt-7">
       <h2 className="text-lg font-medium">Últimas ventas</h2>
       <a href="" className="text-sm font-semibold  text-blue-600">
