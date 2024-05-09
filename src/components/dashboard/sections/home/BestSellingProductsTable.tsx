@@ -36,7 +36,7 @@ export const BestSellingProductsTable = ({
               <td className="text-center">{product.productName}</td>
               <td className="pr-10">
                 <div className="flex justify-end">
-                  <div className="flex h-4 w-min gap-1">
+                  <div className="flex h-4 w-14 gap-1 justify-start">
                     <div className="flex w-4">
                       <img
                         width={20}
