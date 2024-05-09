@@ -13,7 +13,7 @@ export interface SectionProps {
 export const Home = ({ onScroll }: SectionProps) => {
   return (
     <div className="h-full overflow-y-scroll" onScroll={onScroll}>
-      <div className="flex flex-col items-center gap-10 px-4 py-10 sm:flex-row sm:justify-center">
+      <div className="flex flex-col items-center gap-10 px-4 py-10 lg:flex-row lg:justify-center">
         <Orders status="sent" amount={39} />
         <Orders status="pending" amount={15} />
         <Orders status="new" amount={28} />
@@ -33,7 +33,7 @@ export const Home = ({ onScroll }: SectionProps) => {
             title="Clientes"
           />
         </div>
-        <div className="flex flex-col gap-10 w-full items-center">
+        <div className="flex w-full flex-col items-center gap-10">
           <BestSellingProductsTable data={bestSellingProductsData} />
           <LatestSalesTable data={latestSalesData} />
         </div>
