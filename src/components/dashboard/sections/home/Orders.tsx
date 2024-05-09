@@ -35,7 +35,7 @@ export const Orders = ({ status, amount }: OrdersProps) => {
   const img = orders[status].img;
   return (
     <div
-      className={`relative h-32 w-80 rounded-2xl bg-gradient-to-br text-white  ${gradientColors}`}
+      className={`relative h-32 w-full max-w-[45rem] rounded-2xl bg-gradient-to-br text-white sm:w-80  ${gradientColors}`}
     >
       <h3 className="absolute left-6 top-5 text-xl font-bold">
         Pedidos {orders[status].text}
