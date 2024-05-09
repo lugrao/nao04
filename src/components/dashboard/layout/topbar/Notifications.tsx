@@ -5,7 +5,7 @@ export const Notifications = () => {
         <img
           width={26}
           height={26}
-          src="public/notification-message.svg"
+          src="/notification-message.svg"
           alt="Ícono de notificación de mensajes"
         />
       </div>
@@ -13,7 +13,7 @@ export const Notifications = () => {
         <img
           width={24}
           height={24}
-          src="public/notification-alert.svg"
+          src="/notification-alert.svg"
           alt="Ícono de alerta de notificaciones"
         />
       </div>

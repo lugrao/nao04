@@ -25,7 +25,7 @@ export const TotalIncome = ({
             <img
               width={20}
               height={20}
-              src="public/arrow-down.svg"
+              src="/arrow-down.svg"
               alt=""
               className="self-center"
             />
@@ -39,7 +39,7 @@ export const TotalIncome = ({
             <img
               width={20}
               height={20}
-              src="public/arrow-up.svg"
+              src="/arrow-up.svg"
               alt=""
               className="self-center"
             />

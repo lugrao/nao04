@@ -52,7 +52,7 @@ export const NavButton = ({
         <img
           width={25}
           height={25}
-          src={`public/${sectionsByLabel[label]}.svg`}
+          src={`/${sectionsByLabel[label]}.svg`}
           alt={`Ícono de ${label}`}
         />
       </div>
@@ -74,7 +74,7 @@ export const NavButton = ({
         <img
           width={20}
           height={20}
-          src={`public/${sectionsByLabel[label]}-inactive.svg`}
+          src={`/${sectionsByLabel[label]}-inactive.svg`}
           alt={`Ícono de ${label}`}
         />
       </div>

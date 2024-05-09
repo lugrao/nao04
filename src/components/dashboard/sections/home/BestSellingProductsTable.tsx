@@ -5,7 +5,7 @@ export interface BestSellingProductsTableProps {
 export const BestSellingProductsTable = ({
   data,
 }: BestSellingProductsTableProps) => (
-  <div className="w-full max-w-[45rem] lg:w-[38rem] overflow-x-auto rounded-2xl bg-white pb-4 shadow-md">
+  <div className="w-full max-w-[45rem] overflow-x-auto rounded-2xl bg-white pb-4 shadow-md lg:w-[38rem]">
     <div className="flex justify-between px-7 pt-7">
       <h2 className="text-lg font-medium">Productos más vendidos</h2>
       <a href="" className="text-sm font-semibold  text-blue-600">
@@ -36,12 +36,12 @@ export const BestSellingProductsTable = ({
               <td className="text-center">{product.productName}</td>
               <td className="pr-10">
                 <div className="flex justify-end">
-                  <div className="flex h-4 w-14 gap-1 justify-start">
+                  <div className="flex h-4 w-14 justify-start gap-1">
                     <div className="flex w-4">
                       <img
                         width={20}
                         height={20}
-                        src={`public/${icon.filename}`}
+                        src={`/${icon.filename}`}
                         alt={icon.alt}
                         className="self-center"
                       />

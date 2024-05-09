@@ -13,7 +13,7 @@ export const CustomerService = () => {
           <button className="btn bg-blue-200 font-semibold text-sky-700 hover:bg-blue-300">
             <div>
               <img
-                src="public/customer-service.svg"
+                src="/customer-service.svg"
                 alt=""
                 width={23}
                 height={18}
