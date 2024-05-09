@@ -20,7 +20,9 @@ export const Dashboard = () => {
         <div className="flex w-full flex-col">
           <Topbar shadowBottom={isScrolled} />
           {activeSection === "dashboard" && <Home onScroll={handleScroll} />}
-          {activeSection === "sales" && <Sales onScroll={handleScroll} />}
+          {activeSection === "sales" && (
+            <Sales viewportWidth={width} onScroll={handleScroll} />
+          )}
           {activeSection === "products" && <Products onScroll={handleScroll} />}
           {activeSection === "invoices" && <Invoices onScroll={handleScroll} />}
         </div>
