@@ -5,7 +5,7 @@ export const Avatar = () => {
         <img
           width={50}
           height={50}
-          src="src/assets/user.svg"
+          src="public/user.svg"
           alt="Ícono de usuario"
         />
       </div>

@@ -41,7 +41,7 @@ export const BestSellingProductsTable = ({
                       <img
                         width={20}
                         height={20}
-                        src={`src/assets/${icon.filename}`}
+                        src={`public/${icon.filename}`}
                         alt={icon.alt}
                         className="self-center"
                       />

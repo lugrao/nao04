@@ -41,7 +41,7 @@ export const Orders = ({ status, amount }: OrdersProps) => {
         Pedidos {orders[status].text}
       </h3>
       <div className="absolute bottom-[-0.5rem] left-2 ">
-        <img src={`src/assets/${img.filename}`} alt={img.alt} />
+        <img src={`public/${img.filename}`} alt={img.alt} />
       </div>
       <h4 className="absolute bottom-5 right-5 text-6xl font-semibold">
         {amount}

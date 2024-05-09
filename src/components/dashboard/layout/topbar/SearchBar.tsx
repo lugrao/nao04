@@ -6,7 +6,7 @@ export const SearchBar = () => {
           <img
             width={17}
             height={17}
-            src="src/assets/search.svg"
+            src="public/search.svg"
             alt="Ícono de búsqueda"
           />
         </div>
