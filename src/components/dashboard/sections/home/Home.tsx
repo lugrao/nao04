@@ -13,12 +13,12 @@ export interface SectionProps {
 export const Home = ({ onScroll }: SectionProps) => {
   return (
     <div className="h-full overflow-y-scroll" onScroll={onScroll}>
-      <div className="flex justify-center gap-10 px-4 py-10">
+      <div className="flex flex-col items-center gap-10 px-4 py-10 sm:flex-row sm:justify-center">
         <Orders status="sent" amount={39} />
         <Orders status="pending" amount={15} />
         <Orders status="new" amount={28} />
       </div>
-      <div className="flex justify-center gap-10 px-5 py-10">
+      <div className="flex flex-col items-center gap-10 px-5 py-10 lg:flex-row lg:justify-center">
         <div className="flex flex-col gap-10">
           <LineChart
             data={salesData}
