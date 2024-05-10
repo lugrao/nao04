@@ -51,7 +51,7 @@ export const Sidebar = ({ setActiveSection }: SidebarProps) => {
         </div>
       </div>
       <div
-        className="flex flex-col items-center overflow-scroll  pt-6"
+        className="flex flex-col items-center overflow-auto  pt-6"
         onScroll={handleScroll}
       >
         <div className="flex flex-col gap-4 pb-7">
