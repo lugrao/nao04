@@ -14,7 +14,7 @@ export const CustomerService = () => {
             <div>
               <img
                 src="/customer-service.svg"
-                alt=""
+                alt="Ícono de atención al cliente"
                 width={23}
                 height={18}
               />
