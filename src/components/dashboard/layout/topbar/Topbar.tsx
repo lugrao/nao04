@@ -5,12 +5,10 @@ import { Avatar } from "./Avatar";
 
 export interface TopbarProps {
   shadowBottom: boolean;
+  viewportWidth: number;
 }
 
-export const Topbar = ({
-  shadowBottom,
-  viewportWidth,
-}: TopbarProps & { viewportWidth: number }) => {
+export const Topbar = ({ shadowBottom, viewportWidth }: TopbarProps) => {
   return viewportWidth > 599 ? (
     <div
       className={`${shadowBottom && "shadow-bottom"} z-10 flex h-min w-full items-center justify-between bg-violet-50 p-5`}
