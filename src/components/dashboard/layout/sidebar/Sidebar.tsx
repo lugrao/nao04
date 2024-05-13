@@ -6,10 +6,16 @@ import { useIsScrolled } from "utils/useIsScrolled";
 import { Section } from "./NavButton";
 import { Label } from "./NavButton";
 
+/**
+ * Represents a mapping of string keys to ButtonId values.
+ */
 interface ButtonIds {
   [K: string]: ButtonId;
 }
 
+/**
+ * Mapping of section names to button ids.
+ */
 export const btnIds: ButtonIds = {
   dashboard: "btn-dashboard",
   sales: "btn-sales",
@@ -18,6 +24,9 @@ export const btnIds: ButtonIds = {
   logout: "btn-logout",
 };
 
+/**
+ * Mapping of section names to section labels.
+ */
 export const labelBySection: Record<Section, Label> = {
   dashboard: "Dashboard",
   sales: "Ventas",
@@ -26,11 +35,22 @@ export const labelBySection: Record<Section, Label> = {
   logout: "Cerrar sesión",
 };
 
+/**
+ * Props for the Sidebar component.
+ */
 interface SidebarProps {
+  /** Function to set the active section of the sidebar. */
   setActiveSection: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const Sidebar = ({ setActiveSection }: SidebarProps) => {
+/**
+ * Renders a sidebar with a navigation menu and a customer service section.
+ * @component
+ * @param {SidebarProps} props - See {@link SidebarProps}.
+ * @see {@link SidebarProps}
+ * @returns {JSX.Element} JSX element representing the Sidebar component.
+ */
+export const Sidebar = ({ setActiveSection }: SidebarProps): JSX.Element => {
   const [isScrolled, handleScroll] = useIsScrolled();
   const [activeButton, setActiveButton] = useState("btn-dashboard");
 

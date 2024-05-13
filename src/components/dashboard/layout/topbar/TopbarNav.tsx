@@ -4,15 +4,27 @@ import { btnIds } from "../sidebar/Sidebar";
 import { labelBySection } from "../sidebar/Sidebar";
 import { Section } from "../sidebar/NavButton";
 
+/**
+ * Props for the TopbarNav component.
+ */
 interface TopbarNavProps {
+  /** Function to set the active section. */
   setActiveSection: React.Dispatch<React.SetStateAction<string>>;
+  /** Indicates whether buttons should display text. */
   buttonsWithText: boolean;
 }
 
+/**
+ * Displays navigation buttons.
+ *
+ * @component
+ * @param {TopbarNavProps} props - See {@link TopbarNavProps}.
+ * @returns {JSX.Element} JSX element representing the TopbarNav component.
+ */
 export const TopbarNav = ({
   setActiveSection,
   buttonsWithText,
-}: TopbarNavProps) => {
+}: TopbarNavProps): JSX.Element => {
   const [activeButton, setActiveButton] = useState("btn-dashboard");
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

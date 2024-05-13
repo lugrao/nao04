@@ -3,13 +3,29 @@ import { SearchBar } from "./SearchBar";
 import { Notifications } from "./Notifications";
 import { Avatar } from "./Avatar";
 
+/**
+ * Props for the Topbar component.
+ */
 export interface TopbarProps {
+  /** Specifies whether the topbar should have a shadow at the bottom. */
   shadowBottom: boolean;
+  /** The width of the viewport. */
   viewportWidth: number;
 }
 
-export const Topbar = ({ shadowBottom, viewportWidth }: TopbarProps) => {
-  return viewportWidth > 599 ? (
+/**
+ * Renders the topbar component, displaying total income, search bar,
+ * notifications, and avatar.
+ *
+ * @component
+ * @param {TopbarProps} props - See {@link TopbarProps}.
+ * @returns {JSX.Element} JSX element representing the Topbar component.
+ */
+export const Topbar = ({
+  shadowBottom,
+  viewportWidth,
+}: TopbarProps): JSX.Element =>
+  viewportWidth > 599 ? (
     <div
       className={`${shadowBottom && "shadow-bottom"} z-10 flex h-min w-full items-center justify-between bg-violet-50 p-5`}
     >
@@ -38,4 +54,3 @@ export const Topbar = ({ shadowBottom, viewportWidth }: TopbarProps) => {
       </div>
     </div>
   );
-};

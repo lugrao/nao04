@@ -1,10 +1,22 @@
+/**
+ * Props for the BestSellingProductsTable component.
+ */
 export interface BestSellingProductsTableProps {
+  /** Array of data for the best selling products table. Each element contains
+   * a product name and the sales percentage. */
   data: { productName: string; salesPercentage: number }[];
 }
 
+/**
+ * Displays a table of best selling products.
+ *
+ * @component
+ * @param {BestSellingProductsTableProps} props - See {@link BestSellingProductsTableProps}.
+ * @returns {JSX.Element} JSX element representing the BestSellingProductsTable component.
+ */
 export const BestSellingProductsTable = ({
   data,
-}: BestSellingProductsTableProps) => (
+}: BestSellingProductsTableProps): JSX.Element => (
   <div className="w-full max-w-[45rem] overflow-x-auto rounded-2xl bg-white pb-4 shadow-md lg:w-[38rem]">
     <div className="flex justify-between px-7 pt-7">
       <h2 className="text-lg font-medium">Productos más vendidos</h2>

@@ -1,3 +1,6 @@
+/**
+ * Represents a section of the application navigation.
+ */
 export type Section =
   | "dashboard"
   | "sales"
@@ -5,6 +8,9 @@ export type Section =
   | "invoices"
   | "logout";
 
+/**
+ * Represents the label corresponding to each section in the navigation.
+ */
 export type Label =
   | "Dashboard"
   | "Ventas"
@@ -12,17 +18,32 @@ export type Label =
   | "Recibos"
   | "Cerrar sesión";
 
+/**
+ * Represents the unique identifier for a navigation button.
+ */
 export type ButtonId = `btn-${Section}`;
 
+/**
+ * Props for the NavButton component.
+ */
 export interface NavButtonProps {
+  /** The unique identifier of the button. */
   id?: ButtonId;
+  /** Indicates whether the button is currently active. */
   isActive: boolean;
+  /** Indicates whether the application is being viewed on a mobile device. */
   isMobile: boolean;
+  /** The label text of the button. */
   label: Label;
+  /** Function called when the button is clicked. */
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => unknown;
+  /** Indicates whether the button should display text alongside the icon. */
   withText: boolean;
 }
 
+/**
+ * Mapping of section labels to section identifiers.
+ */
 const sectionsByLabel: Record<Label, Section> = {
   Dashboard: "dashboard",
   Ventas: "sales",
@@ -31,6 +52,13 @@ const sectionsByLabel: Record<Label, Section> = {
   "Cerrar sesión": "logout",
 };
 
+/**
+ * Renders a button in the navigation menu.
+ *
+ * @component
+ * @param {NavButtonProps} props - See {@link NavButtonProps}.
+ * @returns {JSX.Element} JSX element representing the NavButton.
+ */
 export const NavButton = ({
   id,
   isActive,
@@ -38,7 +66,7 @@ export const NavButton = ({
   label,
   onClick,
   withText,
-}: NavButtonProps) => {
+}: NavButtonProps): JSX.Element => {
   return isActive ? (
     <button
       id={id}

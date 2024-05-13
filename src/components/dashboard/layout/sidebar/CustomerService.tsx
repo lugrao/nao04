@@ -1,4 +1,11 @@
-export const CustomerService = () => {
+/**
+ * Displays information about customer support.
+ * Provides a button to connect with customer service and links to terms and privacy policies.
+ *
+ * @component
+ * @returns {JSX.Element} JSX element representing the CustomerService component.
+ */
+export const CustomerService = (): JSX.Element => {
   return (
     <div className="card bg-base-100">
       <div className="card-body">
