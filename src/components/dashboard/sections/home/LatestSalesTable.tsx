@@ -1,10 +1,10 @@
 import { formatUSDAmount } from "utils/formatUSDAmount";
 
 /**
- * Props for the LatestSalesTable component.
+ * Props for the {@link LatestSalesTable} component.
  */
 export interface LatestSalesTableProps {
-  /** Data containing product name and sale amount for the latest sales. */
+  // Data containing product name and sale amount for the latest sales.
   data: { productName: string; saleAmount: number }[];
 }
 
@@ -13,7 +13,7 @@ export interface LatestSalesTableProps {
  *
  * @component
  * @param {LatestSalesTableProps} props - See {@link LatestSalesTableProps}.
- * @returns {JSX.Element} JSX element representing the LatestSalesTable component.
+ * @returns {JSX.Element} The rendered LatestSalesTable component.
  */
 export const LatestSalesTable = ({
   data,

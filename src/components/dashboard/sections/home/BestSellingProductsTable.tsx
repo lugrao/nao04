@@ -1,8 +1,8 @@
 /**
- * Props for the BestSellingProductsTable component.
+ * Props for the {@link BestSellingProductsTable} component.
  */
 export interface BestSellingProductsTableProps {
-  /** Array of data for the best selling products table. Each element contains
+  /** Array of data for the BestSellingProductsTable. Each element contains
    * a product name and the sales percentage. */
   data: { productName: string; salesPercentage: number }[];
 }
@@ -12,7 +12,7 @@ export interface BestSellingProductsTableProps {
  *
  * @component
  * @param {BestSellingProductsTableProps} props - See {@link BestSellingProductsTableProps}.
- * @returns {JSX.Element} JSX element representing the BestSellingProductsTable component.
+ * @returns {JSX.Element} The rendered BestSellingProductsTable component.
  */
 export const BestSellingProductsTable = ({
   data,

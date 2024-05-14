@@ -10,7 +10,7 @@ import { salesData, customersData } from "./chartData";
  * Props for section components.
  */
 export interface SectionProps {
-  /** Event handler for the scroll event. */
+  // Event handler for the scroll event.
   onScroll: (e: React.UIEvent<HTMLDivElement>) => void;
 }
 
@@ -20,7 +20,7 @@ export interface SectionProps {
  *
  * @component
  * @param {SectionProps} props - See {@link SectionProps}.
- * @returns {JSX.Element} JSX element representing the Home component.
+ * @returns {JSX.Element} The rendered Home component.
  */
 export const Home = ({ onScroll }: SectionProps): JSX.Element => (
   <div className="h-full overflow-y-scroll" onScroll={onScroll}>
