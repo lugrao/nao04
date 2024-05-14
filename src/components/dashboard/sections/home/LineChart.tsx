@@ -1,9 +1,14 @@
 import { ResponsiveLine } from "@nivo/line";
 import { formatUSDAmount } from "utils/formatUSDAmount";
 import { getSpanishDate } from "utils/getSpanishDate";
-import { ChartData } from "./chartData";
 
 export type ChartCategory = "sales" | "customers";
+
+export interface ChartData {
+  id: string;
+  color: string;
+  data: { x: string; y: number }[];
+}
 
 export interface LineChartProps {
   category: ChartCategory;
