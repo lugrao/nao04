@@ -1,11 +1,13 @@
 import { formatUSDAmount } from "utils/formatUSDAmount";
 
-export type SalesByCountryTableData = {
+export interface SalesByCountryEntry {
   countryCode: string;
   countryName: string;
   numberOfSales: number;
   totalIncome: number;
-}[];
+}
+
+export type SalesByCountryTableData = SalesByCountryEntry[];
 
 export interface SalesByCountryTableProps {
   data: SalesByCountryTableData;
