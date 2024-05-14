@@ -2,20 +2,25 @@ import { useState } from "react";
 import { Sidebar } from "src/components";
 import { Topbar } from "src/components";
 import { TopbarNav } from "components/dashboard/layout/topbar/TopbarNav";
-import { Home } from "src/components";
-import { Sales } from "src/components";
-import { Products } from "src/components";
-import { Invoices } from "src/components";
 import { useIsScrolled } from "src/utils/useIsScrolled";
 import { useWindowDimensions } from "src/utils/useWindowDimensions";
+import { ReactNode } from "react";
+
+/**
+ * Props for the {@link Dashboard} component.
+ */
+export interface DashboardProps {
+  children: ReactNode;
+}
 
 /**
  * Renders the main dashboard component.
  *
  * @component
+ * @param {DashboardProps} props - See {@link DashboardProps}.
  * @returns {JSX.Element} The rendered Dashboard component.
  */
-export const Dashboard = (): JSX.Element => {
+export const Dashboard = ({ children }: DashboardProps): JSX.Element => {
   const { width } = useWindowDimensions();
   const [isScrolled, handleScroll] = useIsScrolled();
   const [activeSection, setActiveSection] = useState("dashboard");
@@ -30,12 +35,7 @@ export const Dashboard = (): JSX.Element => {
           />
         )}
         <Topbar viewportWidth={width} shadowBottom={isScrolled} />
-        {activeSection === "dashboard" && <Home onScroll={handleScroll} />}
-        {activeSection === "sales" && (
-          <Sales viewportWidth={width} onScroll={handleScroll} />
-        )}
-        {activeSection === "products" && <Products onScroll={handleScroll} />}
-        {activeSection === "invoices" && <Invoices onScroll={handleScroll} />}
+        {children}
       </div>
     </div>
   ) : (
