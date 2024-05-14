@@ -1,8 +1,4 @@
-export interface ChartData {
-  id: string;
-  color: string;
-  data: { x: string; y: number }[];
-}
+import { ChartData } from "./LineChart";
 
 export const salesData: ChartData[] = [
   {
