@@ -3,16 +3,25 @@ import { ResponsiveChoropleth } from "@nivo/geo";
 import worldCountries from "./worldCountries.json";
 import { SalesByCountryTableData } from "./SalesByCountryTable";
 
+/**
+ * Props for the {@link WorldMap} component.
+ */
 export interface WorldMapProps {
+  // The data for the world map.
   data: SalesByCountryTableData;
 }
 
-export const WorldMap = ({ data }: WorldMapProps) => {
+/**
+ * Renders a choropleth world map showing sales data by country.
+ *
+ * @component
+ * @param {WorldMapProps} props - See {@link WorldMapProps}.
+ * @returns {JSX.Element} The rendered WorldMap component.
+ */
+export const WorldMap = ({ data }: WorldMapProps): JSX.Element => {
   const [mapData, setMapData] = useState<
     { id: string; value: number }[] | undefined
   >(undefined);
-
-  console.log(mapData);
 
   useEffect(() => {
     const mData: { id: string; value: number }[] = [];

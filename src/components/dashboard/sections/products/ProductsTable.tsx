@@ -1,18 +1,41 @@
 import { formatUSDAmount } from "utils/formatUSDAmount";
 
-export type ProductsTableData = {
+/**
+ * Represents a single entry in the {@link ProductsTable}.
+ */
+export interface ProductEntry {
+  // The name of the product.
   product: string;
+  // The category of the product.
   category: string;
+  // The number of sales for the product.
   numberOfSales: number;
+  // The number of sales for the product.
   totalIncome: number;
-}[];
+}
 
+/**
+ * Represents the data structure for the {@link ProductsTable} component.
+ */
+export type ProductsTableData = ProductEntry[];
+
+/**
+ * Props for the {@link ProductsTable} component.
+ */
 export interface ProductsTableProps {
+  // Array of product data objects.
   data: ProductsTableData;
 }
 
+/**
+ * Renders a table displaying product information.
+ *
+ * @component
+ * @param {ProductsTableProps} props - See {@link ProductsTableProps}.
+ * @returns {JSX.Element} The rendered ProductsTable component.
+ */
 export const ProductsTable = ({ data }: ProductsTableProps) => (
-  <div className="xs-max:overflow-scroll w-full max-w-[70rem] rounded-2xl bg-white pb-4 shadow-md">
+  <div className="w-full max-w-[70rem] rounded-2xl bg-white pb-4 shadow-md xs-max:overflow-scroll">
     <div className="flex justify-between pb-7 pl-11 pt-7">
       <h2 className="text-lg font-bold">Productos</h2>
     </div>

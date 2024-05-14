@@ -1,10 +1,21 @@
+/**
+ * Represents the status of an order.
+ */
 export type OrderStatus = "sent" | "pending" | "new";
 
+/**
+ * Props for the {@link Orders} component.
+ */
 export interface OrdersProps {
+  // The status of the order.
   status: OrderStatus;
+  // The amount of orders.
   amount: number;
 }
 
+/**
+ * Configuration object for order statuses.
+ */
 const orders: Record<
   OrderStatus,
   {
@@ -30,7 +41,14 @@ const orders: Record<
   },
 };
 
-export const Orders = ({ status, amount }: OrdersProps) => {
+/**
+ * Displays the status and amount of orders.
+ *
+ * @component
+ * @param {OrdersProps} props - See {@link OrdersProps}.
+ * @returns {JSX.Element} The rendered Orders component.
+ */
+export const Orders = ({ status, amount }: OrdersProps): JSX.Element => {
   const gradientColors = orders[status].gradientColors;
   const img = orders[status].img;
   return (

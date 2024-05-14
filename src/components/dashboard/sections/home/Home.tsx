@@ -7,7 +7,7 @@ import { data as latestSalesData } from "./latestSalesData";
 import { salesData, customersData } from "./chartData";
 
 /**
- * Props for the Home component.
+ * Props for section components.
  */
 export interface SectionProps {
   /** Event handler for the scroll event. */

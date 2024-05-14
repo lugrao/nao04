@@ -1,20 +1,42 @@
 import { formatUSDAmount } from "utils/formatUSDAmount";
 
+/**
+ * Represents a single entry in the {@link InvoicesTable}.
+ */
 export type InvoiceEntry = {
+  // The invoice number.
   invoiceNumber: number;
+  // The name of the client.
   clientName: string;
+  // The date of purchase.
   dateOfPurchase: string;
+  // The status of the invoice.
   status: "Pagado" | "Pendiente";
+  // The total amount of the invoice.
   totalAmount: number;
 };
 
+/**
+ * Represents the data structure for the {@link InvoicesTable} component.
+ */
 export type InvoicesTableData = InvoiceEntry[];
 
+/**
+ * Props for the {@link InvoicesTable} component.
+ */
 export interface InvoicesTableProps {
+  // Array of invoice data objects.
   data: InvoicesTableData;
 }
 
-export const InvoicesTable = ({ data }: InvoicesTableProps) => (
+/**
+ * Renders a table displaying invoice data.
+ *
+ * @component
+ * @param {InvoicesTableProps} props - See {@link InvoicesTableProps}.
+ * @returns {JSX.Element} The rendered InvoicesTable component.
+ */
+export const InvoicesTable = ({ data }: InvoicesTableProps): JSX.Element => (
   <div className="w-full max-w-[70rem] rounded-2xl bg-white pb-4 shadow-md xs-max:overflow-scroll">
     <div className="flex justify-between pb-7 pl-11 pt-7">
       <h2 className="text-lg font-bold">Recibos</h2>
