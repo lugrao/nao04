@@ -1,19 +1,21 @@
 import { formatUSDAmount } from "utils/formatUSDAmount";
 
-export type InvoicesTableData = {
+export type InvoiceEntry = {
   invoiceNumber: number;
   clientName: string;
   dateOfPurchase: string;
   status: "Pagado" | "Pendiente";
   totalAmount: number;
-}[];
+};
+
+export type InvoicesTableData = InvoiceEntry[];
 
 export interface InvoicesTableProps {
   data: InvoicesTableData;
 }
 
 export const InvoicesTable = ({ data }: InvoicesTableProps) => (
-  <div className="xs-max:overflow-scroll w-full max-w-[70rem] rounded-2xl bg-white pb-4 shadow-md">
+  <div className="w-full max-w-[70rem] rounded-2xl bg-white pb-4 shadow-md xs-max:overflow-scroll">
     <div className="flex justify-between pb-7 pl-11 pt-7">
       <h2 className="text-lg font-bold">Recibos</h2>
     </div>
