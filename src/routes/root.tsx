@@ -1,6 +1,7 @@
 import "routes/root.css";
 import { Outlet } from "react-router-dom";
 import { Dashboard } from "routes/dashboard";
+import { SectionIsScrolledProvider } from "src/utils/SectionIsScrolledProvider";
 
 /**
  * Renders the root component which serves as the main layout container.
@@ -8,16 +9,16 @@ import { Dashboard } from "routes/dashboard";
  * @component
  * @returns {JSX.Element} The rendered Root component.
  */
-export const Root = (): JSX.Element => {
-  return (
-    <div className="flex h-full w-full items-center justify-center p-2">
-      <div className="flex h-full w-full rounded-3xl bg-white p-0.5">
-        <div className="flex h-full w-full overflow-hidden rounded-3xl bg-violet-50">
+export const Root = (): JSX.Element => (
+  <div className="flex h-full w-full items-center justify-center p-2">
+    <div className="flex h-full w-full rounded-3xl bg-white p-0.5">
+      <div className="flex h-full w-full overflow-hidden rounded-3xl bg-violet-50">
+        <SectionIsScrolledProvider>
           <Dashboard>
             <Outlet />
           </Dashboard>
-        </div>
+        </SectionIsScrolledProvider>
       </div>
     </div>
-  );
-};
+  </div>
+);
