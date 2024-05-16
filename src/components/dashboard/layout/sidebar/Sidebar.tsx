@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { NavButton } from "./NavButton";
 import { CustomerService } from "./CustomerService";
 import { ButtonId } from "./NavButton";
 import { useIsScrolled } from "utils/useIsScrolled";
-import { Section } from "./NavButton";
 import { Label } from "./NavButton";
+import { useLocation } from "react-router-dom";
 
 /**
  * Represents a mapping of string keys to ButtonId values.
@@ -14,34 +13,36 @@ interface ButtonIds {
 }
 
 /**
- * Mapping of section names to button ids.
+ * Mapping of section paths to button ids.
  */
 export const btnIds: ButtonIds = {
-  dashboard: "btn-dashboard",
-  sales: "btn-sales",
-  products: "btn-products",
-  invoices: "btn-invoices",
-  logout: "btn-logout",
+  "/": "btn-dashboard",
+  "/sales": "btn-sales",
+  "/products": "btn-products",
+  "/invoices": "btn-invoices",
+  "/logout": "btn-logout",
 };
 
 /**
- * Mapping of section names to section labels.
+ * Represents the path corresponding to each section in the navigation.
  */
-export const labelBySection: Record<Section, Label> = {
-  dashboard: "Dashboard",
-  sales: "Ventas",
-  products: "Productos",
-  invoices: "Recibos",
-  logout: "Cerrar sesión",
-};
+export type SectionPath =
+  | "/"
+  | "/sales"
+  | "/products"
+  | "/invoices"
+  | "/logout";
 
 /**
- * Props for the Sidebar component.
+ * Mapping of section paths to section labels.
  */
-interface SidebarProps {
-  /** Function to set the active section of the sidebar. */
-  setActiveSection: React.Dispatch<React.SetStateAction<string>>;
-}
+export const labelBySectionPath: Record<SectionPath, Label> = {
+  "/": "Dashboard",
+  "/sales": "Ventas",
+  "/products": "Productos",
+  "/invoices": "Recibos",
+  "/logout": "Cerrar sesión",
+};
 
 /**
  * Renders a sidebar with a navigation menu and a customer service section.
@@ -50,16 +51,9 @@ interface SidebarProps {
  * @see {@link SidebarProps}
  * @returns {JSX.Element} JSX element representing the Sidebar component.
  */
-export const Sidebar = ({ setActiveSection }: SidebarProps): JSX.Element => {
+export const Sidebar = (): JSX.Element => {
+  const { pathname } = useLocation();
   const [isScrolled, handleScroll] = useIsScrolled();
-  const [activeButton, setActiveButton] = useState("btn-dashboard");
-
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const id = e.currentTarget.id;
-    setActiveButton(id);
-    setActiveSection(id.substring(4));
-    if (id === btnIds.logout) return console.log("logged out");
-  };
 
   return (
     <div className="flex w-72 flex-col items-center  bg-white pt-7">
@@ -75,25 +69,22 @@ export const Sidebar = ({ setActiveSection }: SidebarProps): JSX.Element => {
         onScroll={handleScroll}
       >
         <div className="flex flex-col gap-4 pb-7">
-          {Object.keys(btnIds).map((section) => {
+          {Object.keys(btnIds).map((sectionPath) => {
             return (
               <div
                 className={`
-              ${section == "dashboard" && "mb-3"}
-              ${section == "logout" && "mt-6"}
+              ${sectionPath == "/" && "mb-3"}
+              ${sectionPath == "/logout" && "mt-6"}
               `}
               >
                 <NavButton
                   withText={true}
-                  id={btnIds[section]}
-                  onClick={handleClick}
+                  id={btnIds[sectionPath]}
                   isActive={
-                    section === "logout"
-                      ? false
-                      : activeButton === btnIds[section]
+                    sectionPath === "logout" ? false : pathname === sectionPath
                   }
                   isMobile={false}
-                  label={labelBySection[section as Section]}
+                  label={labelBySectionPath[sectionPath as SectionPath]}
                 />
               </div>
             );
