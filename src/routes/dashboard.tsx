@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Sidebar } from "src/components";
 import { Topbar } from "src/components";
 import { TopbarNav } from "components/dashboard/layout/topbar/TopbarNav";
@@ -22,18 +21,13 @@ export interface DashboardProps {
  */
 export const Dashboard = ({ children }: DashboardProps): JSX.Element => {
   const { width } = useWindowDimensions();
-  const [isScrolled, _] = useSectionIsScrolled();
-  const [activeSection, setActiveSection] = useState("dashboard");
+  const [isScrolled] = useSectionIsScrolled();
+
   return width ? (
     <div className="flex w-full">
-      {width > 1024 && <Sidebar setActiveSection={setActiveSection} />}
+      {width > 1024 && <Sidebar />}
       <div className="flex w-full flex-col">
-        {width <= 1024 && (
-          <TopbarNav
-            setActiveSection={setActiveSection}
-            buttonsWithText={width >= 630}
-          />
-        )}
+        {width <= 1024 && <TopbarNav buttonsWithText={width >= 630} />}
         <Topbar viewportWidth={width} shadowBottom={isScrolled} />
         {children}
       </div>
