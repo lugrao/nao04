@@ -1,15 +1,13 @@
-import { useState } from "react";
 import { NavButton } from "../sidebar/NavButton";
 import { btnIds } from "../sidebar/Sidebar";
-import { labelBySection } from "../sidebar/Sidebar";
-import { Section } from "../sidebar/NavButton";
+import { labelBySectionPath } from "../sidebar/Sidebar";
+import { SectionPath } from "../sidebar/Sidebar";
+import { useLocation } from "react-router-dom";
 
 /**
  * Props for the TopbarNav component.
  */
 interface TopbarNavProps {
-  /** Function to set the active section. */
-  setActiveSection: React.Dispatch<React.SetStateAction<string>>;
   /** Indicates whether buttons should display text. */
   buttonsWithText: boolean;
 }
@@ -21,35 +19,25 @@ interface TopbarNavProps {
  * @param {TopbarNavProps} props - See {@link TopbarNavProps}.
  * @returns {JSX.Element} JSX element representing the TopbarNav component.
  */
-export const TopbarNav = ({
-  setActiveSection,
-  buttonsWithText,
-}: TopbarNavProps): JSX.Element => {
-  const [activeButton, setActiveButton] = useState("btn-dashboard");
+export const TopbarNav = ({ buttonsWithText }: TopbarNavProps): JSX.Element => {
+  const { pathname } = useLocation();
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const id = e.currentTarget.id;
-    setActiveButton(id);
-    setActiveSection(id.substring(4));
-    if (id === btnIds.logout) return console.log("logged out");
-  };
   return (
     <div className="flex items-center bg-white p-3">
       <div className="mr-5 h-10 w-10">
         <img src="/capsule-corp.svg" alt="Capsule Corp. logo" />
       </div>
       <div className="flex w-full justify-around">
-        {Object.keys(btnIds).map((section) => {
+        {Object.keys(btnIds).map((sectionPath) => {
           return (
             <NavButton
               withText={buttonsWithText}
-              id={btnIds[section]}
-              onClick={handleClick}
+              id={btnIds[sectionPath]}
               isActive={
-                section === "logout" ? false : activeButton === btnIds[section]
+                sectionPath === "logout" ? false : pathname === sectionPath
               }
               isMobile={true}
-              label={labelBySection[section as Section]}
+              label={labelBySectionPath[sectionPath as SectionPath]}
             />
           );
         })}
