@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 /**
  * Represents a section of the application navigation.
  */
@@ -35,8 +37,6 @@ export interface NavButtonProps {
   isMobile: boolean;
   /** The label text of the button. */
   label: Label;
-  /** Function called when the button is clicked. */
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => unknown;
   /** Indicates whether the button should display text alongside the icon. */
   withText: boolean;
 }
@@ -64,13 +64,11 @@ export const NavButton = ({
   isActive,
   isMobile,
   label,
-  onClick,
   withText,
-}: NavButtonProps): JSX.Element => {
-  return isActive ? (
+}: NavButtonProps): JSX.Element =>
+  isActive ? (
     <button
       id={id}
-      onClick={onClick}
       className={`btn flex  bg-purple-50 hover:border-neutral-200 hover:bg-neutral-200
         ${withText ? "w-44 justify-start" : "w-min"}      
         ${isMobile ? "shadow-sm" : "shadow-lg"}
@@ -91,24 +89,28 @@ export const NavButton = ({
       )}
     </button>
   ) : (
-    <button
-      id={id}
-      onClick={onClick}
-      className={`btn flex border-white bg-white shadow-none hover:border-neutral-200 hover:bg-neutral-200
-        ${withText ? "w-44 justify-start" : "w-min"}      
-      `}
+    <Link
+      to={`${sectionsByLabel[label] === "dashboard" ? "/" : sectionsByLabel[label]}`}
     >
-      <div className="w-5">
-        <img
-          width={20}
-          height={20}
-          src={`/${sectionsByLabel[label]}-inactive.svg`}
-          alt={`Ícono de ${label}`}
-        />
-      </div>
-      {withText && (
-        <div className="pl-4 text-sm font-medium text-indigo-300">{label}</div>
-      )}
-    </button>
+      <button
+        id={id}
+        className={`btn flex border-white bg-white shadow-none hover:border-neutral-200 hover:bg-neutral-200
+      ${withText ? "w-44 justify-start" : "w-min"}      
+      `}
+      >
+        <div className="w-5">
+          <img
+            width={20}
+            height={20}
+            src={`/${sectionsByLabel[label]}-inactive.svg`}
+            alt={`Ícono de ${label}`}
+          />
+        </div>
+        {withText && (
+          <div className="pl-4 text-sm font-medium text-indigo-300">
+            {label}
+          </div>
+        )}
+      </button>
+    </Link>
   );
-};
