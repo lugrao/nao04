@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { Orders } from "./Orders";
 import { LineChart } from "./LineChart";
 import { BestSellingProductsTable } from "./BestSellingProductsTable";
 import { LatestSalesTable } from "./LatestSalesTable";
-import { useSectionIsScrolled } from "src/utils/useSectionIsScrolled";
+import { updateScrollStatus, resetScrollStatus } from "../sectionSlice";
+import { useAppDispatch } from "src/redux/hooks";
 import { data as bestSellingProductsData } from "./bestSellingProductsData";
 import { data as latestSalesData } from "./latestSalesData";
 import { salesData, customersData } from "./chartData";
@@ -15,9 +17,19 @@ import { salesData, customersData } from "./chartData";
  * @returns {JSX.Element} The rendered Home component.
  */
 export const Home = (): JSX.Element => {
-  const [, handleScroll] = useSectionIsScrolled();
+  const useDispatch = useAppDispatch();
+
+  useEffect(() => {
+    return () => {
+      useDispatch(resetScrollStatus());
+    };
+  }, []);
+  
   return (
-    <div className="h-full overflow-y-scroll" onScroll={handleScroll}>
+    <div
+      className="h-full overflow-y-scroll"
+      onScroll={(e) => useDispatch(updateScrollStatus(e))}
+    >
       <div className="flex flex-col items-center gap-10 px-4 py-10 lg:flex-row lg:justify-center">
         <Orders status="sent" amount={39} />
         <Orders status="pending" amount={15} />

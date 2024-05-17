@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { WorldMap } from "./WorldMap";
 import { SalesByCountryTable } from "./SalesByCountryTable";
-import { useSectionIsScrolled } from "src/utils/useSectionIsScrolled";
 import { useWindowDimensions } from "src/utils/useWindowDimensions";
+import { updateScrollStatus, resetScrollStatus } from "../sectionSlice";
+import { useAppDispatch } from "src/redux/hooks";
 import { data } from "./salesByCountryTableData";
 
 /**
@@ -11,12 +13,19 @@ import { data } from "./salesByCountryTableData";
  * @returns {JSX.Element} The rendered Sales component.
  */
 export const Sales = (): JSX.Element => {
-  const [, handleScroll] = useSectionIsScrolled();
+  const useDispatch = useAppDispatch();
   const { width } = useWindowDimensions();
+
+  useEffect(() => {
+    return () => {
+      useDispatch(resetScrollStatus());
+    };
+  }, []);
+  
   return (
     <div
       className="flex flex-col items-center gap-10 overflow-scroll px-4 py-10"
-      onScroll={handleScroll}
+      onScroll={(e) => useDispatch(updateScrollStatus(e))}
     >
       {width ? (
         width > 1024 && (

@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { InvoicesTable } from "./InvoicesTable";
-import { useSectionIsScrolled } from "src/utils/useSectionIsScrolled";
+import { updateScrollStatus, resetScrollStatus } from "../sectionSlice";
+import { useAppDispatch } from "src/redux/hooks";
 import { data } from "./invoicesTableData";
 
 /**
@@ -9,11 +11,18 @@ import { data } from "./invoicesTableData";
  * @returns {JSX.Element} The rendered Invoices section component.
  */
 export const Invoices = (): JSX.Element => {
-  const [, handleScroll] = useSectionIsScrolled();
+  const useDispatch = useAppDispatch();
+
+  useEffect(() => {
+    return () => {
+      useDispatch(resetScrollStatus());
+    };
+  }, []);
+
   return (
     <div
       className="flex flex-col items-center overflow-scroll px-4 py-10"
-      onScroll={handleScroll}
+      onScroll={(e) => useDispatch(updateScrollStatus(e))}
     >
       <InvoicesTable data={data} />
     </div>
