@@ -2,8 +2,9 @@ import { Sidebar } from "src/components";
 import { Topbar } from "src/components";
 import { TopbarNav } from "components/dashboard/layout/topbar/TopbarNav";
 import { useWindowDimensions } from "src/utils/useWindowDimensions";
-import { useSectionIsScrolled } from "src/utils/useSectionIsScrolled";
 import { ReactNode } from "react";
+import { useAppSelector } from "src/redux/hooks";
+import { selectIsScrolled } from "src/components/dashboard/sections/sectionSlice";
 
 /**
  * Props for the {@link Dashboard} component.
@@ -21,7 +22,7 @@ export interface DashboardProps {
  */
 export const Dashboard = ({ children }: DashboardProps): JSX.Element => {
   const { width } = useWindowDimensions();
-  const [isScrolled] = useSectionIsScrolled();
+  const isScrolled = useAppSelector(selectIsScrolled);
 
   return width ? (
     <div className="flex w-full">
