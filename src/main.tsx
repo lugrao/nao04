@@ -1,13 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
 import { Root } from "routes/root.js";
 import { Home } from "./components";
 import { Sales } from "./components";
 import { Products } from "./components";
 import { Invoices } from "./components";
 import { store } from "./redux/store";
-import { Provider } from "react-redux";
+import { Login } from "./routes/login";
+import { SignUp } from "./routes/signup";
 import "src/index.css";
 
 const router = createBrowserRouter([
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: "invoices",
         element: <Invoices />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "login",
+        element: <SignUp />,
       },
     ],
   },
