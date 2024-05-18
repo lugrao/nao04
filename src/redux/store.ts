@@ -1,10 +1,11 @@
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
 import { sectionSlice } from "src/components/dashboard/sections/sectionSlice";
+import { userSlice } from "src/components/authentication/userSlice";
 
 /**
  * Root reducer combining all the slices.
  */
-const rootReducer = combineSlices(sectionSlice);
+const rootReducer = combineSlices(sectionSlice, userSlice);
 
 /**
  * Type representing the root state of the Redux store.
