@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { Root } from "routes/root.js";
+import { Dashboard } from "./routes/dashboard";
 import { Home } from "./components";
 import { Sales } from "./components";
 import { Products } from "./components";
@@ -19,27 +20,33 @@ const router = createBrowserRouter([
     errorElement: <div>Error.</div>,
     children: [
       {
-        path: "",
-        element: <Home />,
-      },
-      {
-        path: "sales",
-        element: <Sales />,
-      },
-      {
-        path: "products",
-        element: <Products />,
-      },
-      {
-        path: "invoices",
-        element: <Invoices />,
+        path: "dashboard",
+        element: <Dashboard />,
+        children: [
+          {
+            path: "",
+            element: <Home />,
+          },
+          {
+            path: "sales",
+            element: <Sales />,
+          },
+          {
+            path: "products",
+            element: <Products />,
+          },
+          {
+            path: "invoices",
+            element: <Invoices />,
+          },
+        ],
       },
       {
         path: "login",
         element: <Login />,
       },
       {
-        path: "login",
+        path: "signup",
         element: <SignUp />,
       },
     ],
