@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { SectionPath } from "./Sidebar";
 
 /**
  * Represents a section of the application navigation.
@@ -53,6 +54,17 @@ const sectionsByLabel: Record<Label, Section> = {
 };
 
 /**
+ * Mapping of section labels to section paths.
+ */
+const sectionPathByLabel: Record<Label, SectionPath> = {
+  Dashboard: "/dashboard",
+  Ventas: "/dashboard/sales",
+  Productos: "/dashboard/products",
+  Recibos: "/dashboard/invoices",
+  "Cerrar sesión": "/dashboard/logout",
+};
+
+/**
  * Renders a button in the navigation menu.
  *
  * @component
@@ -89,9 +101,7 @@ export const NavButton = ({
       )}
     </button>
   ) : (
-    <Link
-      to={`${sectionsByLabel[label] === "dashboard" ? "/" : sectionsByLabel[label]}`}
-    >
+    <Link to={sectionPathByLabel[label]}>
       <button
         id={id}
         className={`btn flex border-white bg-white shadow-none hover:border-neutral-200 hover:bg-neutral-200
