@@ -4,6 +4,7 @@ import { ButtonId } from "./NavButton";
 import { useIsScrolled } from "utils/useIsScrolled";
 import { Label } from "./NavButton";
 import { useLocation } from "react-router-dom";
+import { removeTrailingSlashes } from "src/utils/removeTrailingSlashes";
 
 /**
  * Represents a mapping of string keys to ButtonId values.
@@ -16,32 +17,32 @@ interface ButtonIds {
  * Mapping of section paths to button ids.
  */
 export const btnIds: ButtonIds = {
-  "/": "btn-dashboard",
-  "/sales": "btn-sales",
-  "/products": "btn-products",
-  "/invoices": "btn-invoices",
-  "/logout": "btn-logout",
+  "/dashboard": "btn-dashboard",
+  "/dashboard/sales": "btn-sales",
+  "/dashboard/products": "btn-products",
+  "/dashboard/invoices": "btn-invoices",
+  "/dashboard/logout": "btn-logout",
 };
 
 /**
  * Represents the path corresponding to each section in the navigation.
  */
 export type SectionPath =
-  | "/"
-  | "/sales"
-  | "/products"
-  | "/invoices"
-  | "/logout";
+  | "/dashboard"
+  | "/dashboard/sales"
+  | "/dashboard/products"
+  | "/dashboard/invoices"
+  | "/dashboard/logout";
 
 /**
  * Mapping of section paths to section labels.
  */
 export const labelBySectionPath: Record<SectionPath, Label> = {
-  "/": "Dashboard",
-  "/sales": "Ventas",
-  "/products": "Productos",
-  "/invoices": "Recibos",
-  "/logout": "Cerrar sesión",
+  "/dashboard": "Dashboard",
+  "/dashboard/sales": "Ventas",
+  "/dashboard/products": "Productos",
+  "/dashboard/invoices": "Recibos",
+  "/dashboard/logout": "Cerrar sesión",
 };
 
 /**
@@ -73,15 +74,17 @@ export const Sidebar = (): JSX.Element => {
             return (
               <div
                 className={`
-              ${sectionPath == "/" && "mb-3"}
-              ${sectionPath == "/logout" && "mt-6"}
+              ${sectionPath == "/dashboard" && "mb-3"}
+              ${sectionPath == "/dashboard/logout" && "mt-6"}
               `}
               >
                 <NavButton
                   withText={true}
                   id={btnIds[sectionPath]}
                   isActive={
-                    sectionPath === "logout" ? false : pathname === sectionPath
+                    sectionPath === "/dashboard/logout"
+                      ? false
+                      : removeTrailingSlashes(pathname) === sectionPath
                   }
                   isMobile={false}
                   label={labelBySectionPath[sectionPath as SectionPath]}
