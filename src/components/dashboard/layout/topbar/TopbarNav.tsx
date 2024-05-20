@@ -3,11 +3,12 @@ import { btnIds } from "../sidebar/Sidebar";
 import { labelBySectionPath } from "../sidebar/Sidebar";
 import { SectionPath } from "../sidebar/Sidebar";
 import { useLocation } from "react-router-dom";
+import { removeTrailingSlashes } from "src/utils/removeTrailingSlashes";
 
 /**
  * Props for the TopbarNav component.
  */
-interface TopbarNavProps {
+export interface TopbarNavProps {
   /** Indicates whether buttons should display text. */
   buttonsWithText: boolean;
 }
@@ -34,7 +35,9 @@ export const TopbarNav = ({ buttonsWithText }: TopbarNavProps): JSX.Element => {
               withText={buttonsWithText}
               id={btnIds[sectionPath]}
               isActive={
-                sectionPath === "logout" ? false : pathname === sectionPath
+                sectionPath === "/dashboard/logout"
+                  ? false
+                  : removeTrailingSlashes(pathname) === sectionPath
               }
               isMobile={true}
               label={labelBySectionPath[sectionPath as SectionPath]}
