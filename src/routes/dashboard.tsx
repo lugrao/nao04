@@ -2,16 +2,9 @@ import { Sidebar } from "src/components";
 import { Topbar } from "src/components";
 import { TopbarNav } from "components/dashboard/layout/topbar/TopbarNav";
 import { useWindowDimensions } from "src/utils/useWindowDimensions";
-import { ReactNode } from "react";
 import { useAppSelector } from "src/redux/hooks";
 import { selectIsScrolled } from "src/components/dashboard/sections/sectionSlice";
-
-/**
- * Props for the {@link Dashboard} component.
- */
-export interface DashboardProps {
-  children: ReactNode;
-}
+import { Outlet } from "react-router-dom";
 
 /**
  * Renders the main dashboard component.
@@ -20,7 +13,7 @@ export interface DashboardProps {
  * @param {DashboardProps} props - See {@link DashboardProps}.
  * @returns {JSX.Element} The rendered Dashboard component.
  */
-export const Dashboard = ({ children }: DashboardProps): JSX.Element => {
+export const Dashboard = (): JSX.Element => {
   const { width } = useWindowDimensions();
   const isScrolled = useAppSelector(selectIsScrolled);
 
@@ -30,7 +23,7 @@ export const Dashboard = ({ children }: DashboardProps): JSX.Element => {
       <div className="flex w-full flex-col">
         {width <= 1024 && <TopbarNav buttonsWithText={width >= 630} />}
         <Topbar viewportWidth={width} shadowBottom={isScrolled} />
-        {children}
+        <Outlet />
       </div>
     </div>
   ) : (
