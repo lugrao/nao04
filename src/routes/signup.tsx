@@ -1,7 +1,13 @@
 import { useWindowDimensions } from "src/utils/useWindowDimensions";
 import { SignUpForm, CompanyLogo } from "src/components";
 
-export const SignUp = () => {
+/**
+ * Renders the sign-up page layout with the company logo and the sign-up form.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered SignUp component.
+ */
+export const SignUp = (): JSX.Element => {
   const { width } = useWindowDimensions();
   return (
     <div className="lg-max:overflow-x-scroll flex w-full flex-col items-center lg:flex-row">

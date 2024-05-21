@@ -1,7 +1,13 @@
 import { useWindowDimensions } from "src/utils/useWindowDimensions";
 import { LoginForm, CompanyLogo } from "src/components";
 
-export const Login = () => {
+/**
+ * Renders the login page layout with the company logo and the login form.
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered Login component.
+ */
+export const Login = (): JSX.Element => {
   const { width } = useWindowDimensions();
   return (
     <div className="flex w-full flex-col items-center lg:flex-row">
