@@ -5,7 +5,7 @@ export const Login = () => {
   const { width } = useWindowDimensions();
   return (
     <div className="flex w-full flex-col items-center lg:flex-row">
-      <div className="flex h-min w-full max-w-[50rem] items-center justify-center px-24 pt-20 lg:h-full lg:w-6/12 lg:max-w-full">
+      <div className="flex h-min w-full max-w-[50rem] items-center justify-center px-24 pt-20 lg:h-full lg:w-6/12 lg:max-w-full lg:p-0">
         {width && <CompanyLogo mobile={width < 1024} />}
       </div>
       <div className="flex h-full w-full items-center justify-center p-5 lg:w-6/12 lg:p-0">
