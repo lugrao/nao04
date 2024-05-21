@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       screens: {
         "xs-max": { raw: "(max-width: 410px)" },
+        "lg-max": { raw: "(max-width: 1023px)" },
       },
     },
   },
