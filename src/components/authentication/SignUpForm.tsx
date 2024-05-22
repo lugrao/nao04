@@ -10,19 +10,31 @@ import { FormButton } from "./FormButton";
  */
 export const SignUpForm = (): JSX.Element => {
   const formRef = useRef(null);
+
+  // State to track if the form content is overflowing its container.
   const [isOverflowing, setIsOverflowing] = useState(false);
 
   useEffect(() => {
+    /**
+     * Checks if the form content is overflowing its container and updates
+     * the state.
+     */
     const checkOverflow = () => {
       if (formRef.current) {
         const { scrollHeight, clientHeight } = formRef.current;
         setIsOverflowing(scrollHeight > clientHeight);
       }
     };
+
+    // Check overflow on mount
     checkOverflow();
+
+    // Add event listener to recheck overflow on window resize
     window.addEventListener("resize", checkOverflow);
+
+    // Cleanup event listener on component unmount
     return () => window.removeEventListener("resize", checkOverflow);
-  });
+  }, []);
 
   return (
     <div
