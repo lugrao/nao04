@@ -41,7 +41,7 @@ export const FormInput = ({
       />
       <div className="label">
         {meta.touched && meta.error ? (
-          <span className="label-text-alt h-3">{meta.error}</span>
+          <span className="h-3 text-red-600 text-sm">{meta.error}</span>
         ) : (
           <span className="h-3"></span>
         )}
