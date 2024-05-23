@@ -1,11 +1,17 @@
+import { useField } from "formik";
+
 /**
  * Props for the {@link FormInput} component.
  */
 export interface FormInputProps {
-  // The label text for the input field.
-  labelText: string;
-  // The error message to display.
-  errorMessage: string;
+  // The ID of the input field
+  id: string;
+  // The label text for the input field
+  label: string;
+  // The name attribute of the input field
+  name: string;
+  // The type attribute of the input field
+  type: string;
 }
 
 /**
@@ -16,16 +22,30 @@ export interface FormInputProps {
  * @returns {JSX.Element} The rendered FormInput component.
  */
 export const FormInput = ({
-  labelText,
-  errorMessage,
-}: FormInputProps): JSX.Element => (
-  <label className="form-control w-full">
-    <div className="label">
-      <span className="label-text text-base font-normal">{labelText}</span>
-    </div>
-    <input type="text" className="input input-bordered h-14 w-full" />
-    <div className="label">
-      <span className="label-text-alt invisible">{errorMessage}</span>
-    </div>
-  </label>
-);
+  id,
+  label,
+  name,
+  type,
+}: FormInputProps): JSX.Element => {
+  const [field, meta] = useField({ name, type, id });
+  return (
+    <label htmlFor={id} className="form-control w-full">
+      <div className="label">
+        <span className="label-text text-base font-normal">{label}</span>
+      </div>
+      <input
+        type={type}
+        id={id}
+        className="input input-bordered h-14 w-full"
+        {...field}
+      />
+      <div className="label">
+        {meta.touched && meta.error ? (
+          <span className="label-text-alt h-3">{meta.error}</span>
+        ) : (
+          <span className="h-3"></span>
+        )}
+      </div>
+    </label>
+  );
+};
