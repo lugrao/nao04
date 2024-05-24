@@ -28,9 +28,9 @@ export const sectionSlice = createSlice({
      * @param action - The payload action containing the scroll event.
      */
     updateScrollStatus: create.reducer(
-      (state, action: PayloadAction<React.UIEvent<HTMLDivElement>>) => {
-        const div = action.payload.target as HTMLDivElement;
-        state.isScrolled = div.scrollTop > 0;
+      (state, action: PayloadAction<number>) => {
+        const scrollTop = action.payload;
+        state.isScrolled = scrollTop > 0;
       },
     ),
 
