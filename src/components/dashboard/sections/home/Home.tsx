@@ -24,11 +24,14 @@ export const Home = (): JSX.Element => {
       useDispatch(resetScrollStatus());
     };
   }, []);
-  
+
   return (
     <div
       className="h-full overflow-y-scroll"
-      onScroll={(e) => useDispatch(updateScrollStatus(e))}
+      onScroll={(e) => {
+        const div = e.target as HTMLDivElement;
+        useDispatch(updateScrollStatus(div.scrollTop));
+      }}
     >
       <div className="flex flex-col items-center gap-10 px-4 py-10 lg:flex-row lg:justify-center">
         <Orders status="sent" amount={39} />

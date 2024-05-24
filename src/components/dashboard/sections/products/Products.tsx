@@ -23,7 +23,10 @@ export const Products = (): JSX.Element => {
   return (
     <div
       className="flex flex-col items-center overflow-scroll px-4 py-10"
-      onScroll={(e) => useDispatch(updateScrollStatus(e))}
+      onScroll={(e) => {
+        const div = e.target as HTMLDivElement;
+        useDispatch(updateScrollStatus(div.scrollTop));
+      }}
     >
       <ProductsTable data={data} />
     </div>
