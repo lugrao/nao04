@@ -78,6 +78,7 @@ export const Sidebar = (): JSX.Element => {
           {Object.keys(btnIds).map((sectionPath) => {
             return (
               <div
+                key={sectionPath}
                 className={`
               ${sectionPath === "/dashboard" && "mb-3"}
               ${sectionPath === "/dashboard/logout" && "mt-6"}
