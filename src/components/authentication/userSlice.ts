@@ -39,14 +39,13 @@ export const userSlice = createSlice({
      * @param state - The current state.
      * @param action - The payload action containing a boolean.
      */
-    createUser: create.reducer((_, action: PayloadAction<UserData>) => {
+    createUser: create.reducer((state, action: PayloadAction<UserData>) => {
       const email = action.payload.email;
       if (!localStorage.getItem(email))
-        localStorage.setItem(
-          email,
-          JSON.stringify({ ...action.payload, isLoggedIn: true }),
-        );
+        localStorage.setItem(email, JSON.stringify(action.payload));
       localStorage.setItem("activeSession", email);
+      state.activeSession = email;
+      state.userData = action.payload;
     }),
 
     /**
