@@ -5,14 +5,26 @@ import type { PayloadAction } from "@reduxjs/toolkit";
  * Interface representing the user state.
  */
 export interface UserState {
-  isLoggedIn: boolean;
+  activeSession: string | null;
+  userData: UserData | null;
+}
+
+/**
+ * Interface representing user data.
+ */
+export interface UserData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
 }
 
 /**
  * The initial state for the user slice.
  */
 const initialState: UserState = {
-  isLoggedIn: false,
+  activeSession: null,
+  userData: null,
 };
 
 /**
@@ -27,22 +39,84 @@ export const userSlice = createSlice({
      * @param state - The current state.
      * @param action - The payload action containing a boolean.
      */
-    updateAuthStatus: create.reducer(
-      (state, action: PayloadAction<boolean>) => {
-        state.isLoggedIn = action.payload;
+    createUser: create.reducer((_, action: PayloadAction<UserData>) => {
+      const email = action.payload.email;
+      if (!localStorage.getItem(email))
+        localStorage.setItem(
+          email,
+          JSON.stringify({ ...action.payload, isLoggedIn: true }),
+        );
+      localStorage.setItem("activeSession", email);
+    }),
+
+    /**
+     * Logs the user in.
+     * @param {UserState} state - The current state.
+     * @param {PayloadAction<Pick<UserData, "email" | "password">>} action -
+     * The payload action containing email and password.
+     */
+    logUserIn: create.reducer(
+      (state, action: PayloadAction<Pick<UserData, "email" | "password">>) => {
+        const email = action.payload.email;
+        const password = action.payload.password;
+        const userData = localStorage.getItem(email);
+        const parsedData = userData && JSON.parse(userData);
+        const goodCredentials = userData && parsedData.password === password;
+        goodCredentials && localStorage.setItem("activeSession", email);
+        state.userData = goodCredentials ? parsedData : null;
+        state.activeSession = goodCredentials ? email : null;
       },
     ),
+
+    /**
+     * Logs the user out.
+     * @param {UserState} state - The current state.
+     */
+    logUserOut: create.reducer((state) => {
+      localStorage.setItem("activeSession", "");
+      state.activeSession = null;
+    }),
+
+    /**
+     * Updates the active session.
+     * @param {UserState} state - The current state.
+     */
+    updateActiveSession: create.reducer((state) => {
+      const session = localStorage.getItem("activeSession");
+      state.activeSession = session ? session : null;
+    }),
+
+    /**
+     * Clears user data.
+     * @param {UserState} state - The current state.
+     */
+    clearUserData: create.reducer((state) => {
+      state.userData = null;
+    }),
   }),
   selectors: {
     /**
-     * Selector function to get the `isLoggedIn` state from the Redux store.
-     * @param section - The current section state.
-     * @returns The isLoggedIn state.
+     * Selects the active session.
+     * @param {UserState} user - The user state.
+     * @returns {string | null} The active session.
      */
-    selectIsLoggedIn: (section) => section.isLoggedIn,
+    selectActiveSession: (user: UserState): string | null => user.activeSession,
+    /**
+     * Selects the user data.
+     * @function
+     * @param {UserState} user - The user state.
+     * @returns {UserData | null} The user data.
+     */
+    selectUserData: (user: UserState): UserData | null => user.userData,
   },
 });
 
-export const { updateAuthStatus } = userSlice.actions;
+export const {
+  createUser,
+  logUserIn,
+  logUserOut,
+  clearUserData,
+  updateActiveSession,
+} = userSlice.actions;
 
-export const { selectIsLoggedIn } = userSlice.selectors;
+export const { selectActiveSession, selectUserData } = userSlice.selectors;
