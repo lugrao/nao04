@@ -4,6 +4,9 @@ import { FormButton } from "./FormButton";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { useAppDispatch, useAppSelector } from "src/redux/hooks";
+import { logUserIn, selectUserData } from "./userSlice";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Validation schema for the login form using Yup.
@@ -32,6 +35,9 @@ const LoginSchema = Yup.object().shape({
  */
 export const LoginForm = (): JSX.Element => {
   const formRef = useRef(null);
+  const useDispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const userData = useAppSelector(selectUserData);
 
   // State to track if the form content is overflowing its container.
   const [isOverflowing, setIsOverflowing] = useState(false);
@@ -58,6 +64,10 @@ export const LoginForm = (): JSX.Element => {
     return () => window.removeEventListener("resize", checkOverflow);
   }, []);
 
+  useEffect(() => {
+    userData && navigate("/dashboard");
+  }, [userData]);
+
   return (
     <div
       className={`flex h-full w-full flex-col items-center gap-10 bg-white p-28 ${!isOverflowing ? "justify-center" : ""}`}
@@ -71,7 +81,7 @@ export const LoginForm = (): JSX.Element => {
         }}
         validationSchema={LoginSchema}
         onSubmit={(values) => {
-          console.log(values);
+          useDispatch(logUserIn(values));
         }}
       >
         <Form
