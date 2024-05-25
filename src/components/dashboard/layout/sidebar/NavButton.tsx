@@ -100,6 +100,25 @@ export const NavButton = ({
         </div>
       )}
     </button>
+  ) : label === "Cerrar sesión" ? (
+    <button
+      id={id}
+      className={`btn flex border-white bg-white shadow-none hover:border-neutral-200 hover:bg-neutral-200
+      ${withText ? "w-44 justify-start" : "w-min"}      
+      `}
+    >
+      <div className="w-5">
+        <img
+          width={20}
+          height={20}
+          src={`/${sectionsByLabel[label]}-inactive.svg`}
+          alt={`Ícono de ${label}`}
+        />
+      </div>
+      {withText && (
+        <div className="pl-4 text-sm font-medium text-indigo-300">{label}</div>
+      )}
+    </button>
   ) : (
     <Link to={sectionPathByLabel[label]}>
       <button
