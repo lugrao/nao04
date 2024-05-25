@@ -3,6 +3,9 @@ import { FormInput } from "./FormInput";
 import { FormButton } from "./FormButton";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { useAppDispatch } from "src/redux/hooks";
+import { createUser } from "./userSlice";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Validation schema for the sign-up form using Yup.
@@ -42,6 +45,8 @@ const SignUpSchema = Yup.object().shape({
  */
 export const SignUpForm = (): JSX.Element => {
   const formRef = useRef(null);
+  const useDispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   // State to track if the form content is overflowing its container.
   const [isOverflowing, setIsOverflowing] = useState(false);
@@ -83,8 +88,9 @@ export const SignUpForm = (): JSX.Element => {
           passwordConfirm: "",
         }}
         validationSchema={SignUpSchema}
-        onSubmit={(values) => {
-          console.log(values);
+        onSubmit={({ firstName, lastName, email, password }) => {
+          useDispatch(createUser({ firstName, lastName, email, password }));
+          navigate("/dashboard");
         }}
       >
         <Form
