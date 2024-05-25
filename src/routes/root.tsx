@@ -1,6 +1,9 @@
 import "routes/root.css";
-import { useAppSelector } from "src/redux/hooks";
-import { selectIsLoggedIn } from "src/components/authentication/userSlice";
+import { useAppSelector, useAppDispatch } from "src/redux/hooks";
+import {
+  selectActiveSession,
+  updateActiveSession,
+} from "src/components/authentication/userSlice";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -11,36 +14,48 @@ import { useEffect, useState } from "react";
  * @returns {JSX.Element} The rendered Root component.
  */
 export const Root = (): JSX.Element => {
-  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const dispatch = useAppDispatch();
+  const activeSession = useAppSelector(selectActiveSession);
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [isLoading, setIsLoading] = useState(true);
 
+  /**
+   * When the document reloads, redux state resets. This effect retrieves the
+   * active session from local storage so the user can stayed logged in after
+   * reloads.
+   */
+  useEffect(() => {
+    if (!activeSession) {
+      dispatch(updateActiveSession());
+    }
+  }, []);
+
   useEffect(() => {
     switch (pathname) {
       case "/":
-        if (isLoggedIn) {
+        if (activeSession) {
           navigate("/dashboard");
         } else {
           navigate("/login");
         }
         break;
       case "/login":
-        if (isLoggedIn) {
+        if (activeSession) {
           navigate("/dashboard");
         } else {
           navigate("/login");
         }
         break;
       case "/signup":
-        if (isLoggedIn) {
+        if (activeSession) {
           navigate("/dashboard");
         } else {
           navigate("/signup");
         }
         break;
       default:
-        if (isLoggedIn) {
+        if (activeSession) {
           navigate(pathname);
         } else {
           navigate("/login");
@@ -48,7 +63,7 @@ export const Root = (): JSX.Element => {
         break;
     }
     setIsLoading(false);
-  }, []);
+  }, [activeSession]);
 
   return (
     <div className="flex h-full w-full items-center justify-center p-2">
