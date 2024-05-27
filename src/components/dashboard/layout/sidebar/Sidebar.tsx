@@ -7,7 +7,6 @@ import { useLocation } from "react-router-dom";
 import { removeTrailingSlashes } from "src/utils/removeTrailingSlashes";
 import { logUserOut } from "src/components/authentication/userSlice";
 import { useAppDispatch } from "src/redux/hooks";
-import { useNavigate } from "react-router-dom";
 
 /**
  * Represents a mapping of string keys to ButtonId values.
@@ -59,7 +58,6 @@ export const Sidebar = (): JSX.Element => {
   const { pathname } = useLocation();
   const [isScrolled, handleScroll] = useIsScrolled();
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   return (
     <div className="flex w-72 flex-col items-center  bg-white pt-7">
@@ -87,7 +85,6 @@ export const Sidebar = (): JSX.Element => {
                   sectionPath === "/dashboard/logout"
                     ? () => {
                         dispatch(logUserOut());
-                        navigate("/login");
                       }
                     : undefined
                 }
