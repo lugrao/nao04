@@ -38,7 +38,7 @@ export const LoginForm = (): JSX.Element => {
   const useDispatch = useAppDispatch();
   const navigate = useNavigate();
   const userData = useAppSelector(selectUserData);
-  const errorMessage = useAppSelector(selectError);
+  const { login: loginError } = useAppSelector(selectError);
 
   // State to track if the form content is overflowing its container.
   const [isOverflowing, setIsOverflowing] = useState(false);
@@ -105,8 +105,8 @@ export const LoginForm = (): JSX.Element => {
             <FormButton />
           </div>
           <div className="label">
-            {errorMessage ? (
-              <span className="text-md h-3 text-red-600">{errorMessage}</span>
+            {loginError ? (
+              <span className="text-md h-3 text-red-600">{loginError}</span>
             ) : (
               <span className="h-3"></span>
             )}
