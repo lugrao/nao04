@@ -33,6 +33,7 @@ export const TopbarNav = ({ buttonsWithText }: TopbarNavProps): JSX.Element => {
         {Object.keys(btnIds).map((sectionPath) => {
           return (
             <NavButton
+              key={sectionPath}
               withText={buttonsWithText}
               id={btnIds[sectionPath]}
               isActive={removeTrailingSlashes(pathname) === sectionPath}
