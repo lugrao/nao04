@@ -3,8 +3,8 @@ import { FormInput } from "./FormInput";
 import { FormButton } from "./FormButton";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { useAppDispatch } from "src/redux/hooks";
-import { createUser } from "./userSlice";
+import { useAppDispatch, useAppSelector } from "src/redux/hooks";
+import { createUser, selectError } from "./userSlice";
 import { useNavigate } from "react-router-dom";
 
 /**
@@ -47,6 +47,7 @@ export const SignUpForm = (): JSX.Element => {
   const formRef = useRef(null);
   const useDispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { signUp: signUpError } = useAppSelector(selectError);
 
   // State to track if the form content is overflowing its container.
   const [isOverflowing, setIsOverflowing] = useState(false);
@@ -90,7 +91,6 @@ export const SignUpForm = (): JSX.Element => {
         validationSchema={SignUpSchema}
         onSubmit={({ firstName, lastName, email, password }) => {
           useDispatch(createUser({ firstName, lastName, email, password }));
-          navigate("/dashboard");
         }}
       >
         <Form
@@ -129,6 +129,13 @@ export const SignUpForm = (): JSX.Element => {
           />
           <div className="mt-8 w-full lg:mb-24">
             <FormButton />
+          </div>
+          <div className="label">
+            {signUpError ? (
+              <span className="text-md h-3 text-red-600">{signUpError}</span>
+            ) : (
+              <span className="h-3"></span>
+            )}
           </div>
         </Form>
       </Formik>
