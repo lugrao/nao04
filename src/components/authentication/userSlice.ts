@@ -7,6 +7,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 export interface UserState {
   activeSession: string | null;
   userData: UserData | null;
+  error: string | null;
 }
 
 /**
@@ -25,6 +26,7 @@ export interface UserData {
 const initialState: UserState = {
   activeSession: null,
   userData: null,
+  error: null,
 };
 
 /**
@@ -64,6 +66,9 @@ export const userSlice = createSlice({
         goodCredentials && localStorage.setItem("activeSession", email);
         state.userData = goodCredentials ? parsedData : null;
         state.activeSession = goodCredentials ? email : null;
+        state.error = goodCredentials
+          ? null
+          : "Los datos ingresados son incorrectos.";
       },
     ),
 
@@ -102,11 +107,16 @@ export const userSlice = createSlice({
     selectActiveSession: (user: UserState): string | null => user.activeSession,
     /**
      * Selects the user data.
-     * @function
      * @param {UserState} user - The user state.
      * @returns {UserData | null} The user data.
      */
     selectUserData: (user: UserState): UserData | null => user.userData,
+    /**
+     * Selects the error message.
+     * @param {UserState} user - The user state.
+     * @returns {string | null} The error message.
+     */
+    selectError: (user: UserState): string | null => user.error,
   },
 });
 
@@ -118,4 +128,4 @@ export const {
   updateActiveSession,
 } = userSlice.actions;
 
-export const { selectActiveSession, selectUserData } = userSlice.selectors;
+export const { selectActiveSession, selectUserData, selectError} = userSlice.selectors;
