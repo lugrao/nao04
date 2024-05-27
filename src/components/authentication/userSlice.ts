@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { redirect } from "react-router-dom";
 
 /**
  * Interface representing the user state.
@@ -7,7 +8,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 export interface UserState {
   activeSession: string | null;
   userData: UserData | null;
-  error: string | null;
+  error: { login: string | null; signUp: string | null };
 }
 
 /**
@@ -26,7 +27,7 @@ export interface UserData {
 const initialState: UserState = {
   activeSession: null,
   userData: null,
-  error: null,
+  error: { login: null, signUp: null },
 };
 
 /**
@@ -37,17 +38,25 @@ export const userSlice = createSlice({
   initialState,
   reducers: (create) => ({
     /**
-     * Updates the authentication status.
-     * @param state - The current state.
-     * @param action - The payload action containing a boolean.
+     * Creates a new user and redirects to /dashboard.
+     * @param {UserState} - The current state.
+     * @param {PayloadAction<UserData>} - The payload action containing user data.
      */
     createUser: create.reducer((state, action: PayloadAction<UserData>) => {
       const email = action.payload.email;
-      if (!localStorage.getItem(email))
+      const userAlreadyRegistered = localStorage.getItem(email);
+      if (!userAlreadyRegistered) {
         localStorage.setItem(email, JSON.stringify(action.payload));
-      localStorage.setItem("activeSession", email);
-      state.activeSession = email;
-      state.userData = action.payload;
+      }
+      !userAlreadyRegistered &&
+        localStorage.setItem(email, JSON.stringify(action.payload));
+      !userAlreadyRegistered && localStorage.setItem("activeSession", email);
+      state.activeSession = userAlreadyRegistered ? null : email;
+      state.userData = userAlreadyRegistered ? null : action.payload;
+      state.error.signUp = userAlreadyRegistered
+        ? "Ya existe una cuenta asociada al correo electrónico ingresado."
+        : null;
+      !userAlreadyRegistered && redirect("/dashboard");
     }),
 
     /**
@@ -66,7 +75,7 @@ export const userSlice = createSlice({
         goodCredentials && localStorage.setItem("activeSession", email);
         state.userData = goodCredentials ? parsedData : null;
         state.activeSession = goodCredentials ? email : null;
-        state.error = goodCredentials
+        state.error.login = goodCredentials
           ? null
           : "Los datos ingresados son incorrectos.";
       },
@@ -112,11 +121,14 @@ export const userSlice = createSlice({
      */
     selectUserData: (user: UserState): UserData | null => user.userData,
     /**
-     * Selects the error message.
+     * Selects the error messages.
      * @param {UserState} user - The user state.
-     * @returns {string | null} The error message.
+     * @returns {{ login: string | null; signUp: string | null }} The error
+     * messages object.
      */
-    selectError: (user: UserState): string | null => user.error,
+    selectError: (
+      user: UserState,
+    ): { login: string | null; signUp: string | null } => user.error,
   },
 });
 
@@ -128,4 +140,5 @@ export const {
   updateActiveSession,
 } = userSlice.actions;
 
-export const { selectActiveSession, selectUserData, selectError} = userSlice.selectors;
+export const { selectActiveSession, selectUserData, selectError } =
+  userSlice.selectors;
