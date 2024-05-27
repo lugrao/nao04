@@ -1,12 +1,11 @@
 import { NavButton } from "./NavButton";
+import { LogoutButton } from "./LogoutButton";
 import { CustomerService } from "./CustomerService";
 import { ButtonId } from "./NavButton";
 import { useIsScrolled } from "utils/useIsScrolled";
 import { Label } from "./NavButton";
 import { useLocation } from "react-router-dom";
 import { removeTrailingSlashes } from "src/utils/removeTrailingSlashes";
-import { logUserOut } from "src/components/authentication/userSlice";
-import { useAppDispatch } from "src/redux/hooks";
 
 /**
  * Represents a mapping of string keys to ButtonId values.
@@ -23,7 +22,6 @@ export const btnIds: ButtonIds = {
   "/dashboard/sales": "btn-sales",
   "/dashboard/products": "btn-products",
   "/dashboard/invoices": "btn-invoices",
-  "/dashboard/logout": "btn-logout",
 };
 
 /**
@@ -33,8 +31,7 @@ export type SectionPath =
   | "/dashboard"
   | "/dashboard/sales"
   | "/dashboard/products"
-  | "/dashboard/invoices"
-  | "/dashboard/logout";
+  | "/dashboard/invoices";
 
 /**
  * Mapping of section paths to section labels.
@@ -44,20 +41,16 @@ export const labelBySectionPath: Record<SectionPath, Label> = {
   "/dashboard/sales": "Ventas",
   "/dashboard/products": "Productos",
   "/dashboard/invoices": "Recibos",
-  "/dashboard/logout": "Cerrar sesión",
 };
 
 /**
  * Renders a sidebar with a navigation menu and a customer service section.
  * @component
- * @param {SidebarProps} props - See {@link SidebarProps}.
- * @see {@link SidebarProps}
  * @returns {JSX.Element} JSX element representing the Sidebar component.
  */
 export const Sidebar = (): JSX.Element => {
   const { pathname } = useLocation();
   const [isScrolled, handleScroll] = useIsScrolled();
-  const dispatch = useAppDispatch();
 
   return (
     <div className="flex w-72 flex-col items-center  bg-white pt-7">
@@ -79,30 +72,21 @@ export const Sidebar = (): JSX.Element => {
                 key={sectionPath}
                 className={`
               ${sectionPath === "/dashboard" && "mb-3"}
-              ${sectionPath === "/dashboard/logout" && "mt-6"}
               `}
-                onClick={
-                  sectionPath === "/dashboard/logout"
-                    ? () => {
-                        dispatch(logUserOut());
-                      }
-                    : undefined
-                }
               >
                 <NavButton
                   withText={true}
                   id={btnIds[sectionPath]}
-                  isActive={
-                    sectionPath === "/dashboard/logout"
-                      ? false
-                      : removeTrailingSlashes(pathname) === sectionPath
-                  }
+                  isActive={removeTrailingSlashes(pathname) === sectionPath}
                   isMobile={false}
                   label={labelBySectionPath[sectionPath as SectionPath]}
                 />
               </div>
             );
           })}
+          <div className="mt-6">
+            <LogoutButton withText={true} />
+          </div>
         </div>
         <CustomerService />
       </div>
