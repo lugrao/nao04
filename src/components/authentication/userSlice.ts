@@ -68,12 +68,12 @@ export const userSlice = createSlice({
     ),
 
     /**
-     * Logs the user out.
-     * @param {UserState} state - The current state.
+     * Logs the user out by cleaning the active session in local storage and
+     * resetting the Redux state when reloading the page.
      */
-    logUserOut: create.reducer((state) => {
+    logUserOut: create.reducer(() => {
       localStorage.setItem("activeSession", "");
-      state.activeSession = null;
+      window.location.href = "/";
     }),
 
     /**
