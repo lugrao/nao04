@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useAppDispatch, useAppSelector } from "src/redux/hooks";
-import { logUserIn, selectUserData } from "./userSlice";
+import { logUserIn, selectUserData, selectError } from "./userSlice";
 import { useNavigate } from "react-router-dom";
 
 /**
@@ -38,6 +38,7 @@ export const LoginForm = (): JSX.Element => {
   const useDispatch = useAppDispatch();
   const navigate = useNavigate();
   const userData = useAppSelector(selectUserData);
+  const errorMessage = useAppSelector(selectError);
 
   // State to track if the form content is overflowing its container.
   const [isOverflowing, setIsOverflowing] = useState(false);
@@ -102,6 +103,13 @@ export const LoginForm = (): JSX.Element => {
           />
           <div className="mt-8 w-full">
             <FormButton />
+          </div>
+          <div className="label">
+            {errorMessage ? (
+              <span className="text-md h-3 text-red-600">{errorMessage}</span>
+            ) : (
+              <span className="h-3"></span>
+            )}
           </div>
           <h2 className="mt-14 lg:mb-24">
             ¿No eres usuario?{" "}
