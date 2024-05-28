@@ -1,7 +1,7 @@
 import { formatUSDAmount } from "utils/formatUSDAmount";
 
 /**
- * Props for the TotalIncome component.
+ * Props for the {@link TotalIncome} component.
  */
 export interface TotalIncomeProps {
   /** The total income amount. */

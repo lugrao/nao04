@@ -17,7 +17,7 @@ export type Label = "Dashboard" | "Ventas" | "Productos" | "Recibos";
 export type ButtonId = `btn-${Section}`;
 
 /**
- * Props for the NavButton component.
+ * Props for the {@link NavButton} component.
  */
 export interface NavButtonProps {
   /** The unique identifier of the button. */

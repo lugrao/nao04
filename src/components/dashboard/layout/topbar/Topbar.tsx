@@ -4,7 +4,7 @@ import { Notifications } from "./Notifications";
 import { Avatar } from "./Avatar";
 
 /**
- * Props for the Topbar component.
+ * Props for the {@link Topbar} component.
  */
 export interface TopbarProps {
   /** Specifies whether the topbar should have a shadow at the bottom. */
