@@ -30,8 +30,8 @@ export const CustomerService = (): JSX.Element => {
           </button>
         </div>
         <div className="flex flex-col gap-1 pt-12 text-left text-sm text-stone-500">
-          <a href="">Términos y condiciones</a>
-          <a href="">Política de privacidad</a>
+          <span className="cursor-pointer">Términos y condiciones</span>
+          <span className="cursor-pointer">Política de privacidad</span>
         </div>
       </div>
     </div>
