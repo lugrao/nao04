@@ -38,10 +38,17 @@ export const FormInput = ({
         id={id}
         className="input input-bordered h-14 w-full"
         {...field}
+        aria-describedby={`${id}-error`}
       />
       <div className="label">
         {meta.touched && meta.error ? (
-          <span className="h-3 text-red-600 text-sm">{meta.error}</span>
+          <span
+            id={`${id}-error`}
+            role="alert"
+            className="h-3 text-sm text-red-600"
+          >
+            {meta.error}
+          </span>
         ) : (
           <span className="h-3"></span>
         )}
