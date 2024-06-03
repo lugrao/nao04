@@ -26,7 +26,7 @@ export const Home = (): JSX.Element => {
   }, []);
 
   return (
-    <div
+    <section
       className="h-full overflow-y-scroll"
       onScroll={(e) => {
         const div = e.target as HTMLDivElement;
@@ -58,6 +58,6 @@ export const Home = (): JSX.Element => {
           <LatestSalesTable data={latestSalesData} />
         </div>
       </div>
-    </div>
+    </section>
   );
 };

@@ -20,7 +20,7 @@ export const Invoices = (): JSX.Element => {
   }, []);
 
   return (
-    <div
+    <section
       className="flex flex-col items-center overflow-scroll px-4 py-10"
       onScroll={(e) => {
         const div = e.target as HTMLDivElement;
@@ -28,6 +28,6 @@ export const Invoices = (): JSX.Element => {
       }}
     >
       <InvoicesTable data={data} />
-    </div>
+    </section>
   );
 };

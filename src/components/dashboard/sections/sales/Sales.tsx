@@ -23,7 +23,7 @@ export const Sales = (): JSX.Element => {
   }, []);
 
   return (
-    <div
+    <section
       className="flex flex-col items-center gap-10 overflow-scroll px-4 py-10"
       onScroll={(e) => {
         const div = e.target as HTMLDivElement;
@@ -43,6 +43,6 @@ export const Sales = (): JSX.Element => {
       )}
 
       <SalesByCountryTable data={data} />
-    </div>
+    </section>
   );
 };
