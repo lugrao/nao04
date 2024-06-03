@@ -1,22 +1,19 @@
 /// <reference types="cypress" />
 
 describe("Sign up page", () => {
-  const user = {
-    firstName: "Jerry",
-    lastName: "Seinfeld",
-    email: "seinfeld@mail.com",
-    password: "asdQWE123",
-  };
-
   it("lets the user create an account", () => {
-    cy.visit("http://localhost:5173/signup");
+    cy.fixture("user").then((user) => {
+      cy.visit("http://localhost:5173/signup");
 
-    cy.get("#input-first-name").should("be.visible").type(user.firstName);
-    cy.get("#input-last-name").should("be.visible").type(user.lastName);
-    cy.get("#input-email").should("be.visible").type(user.email);
-    cy.get("#input-password").should("be.visible").type(user.password);
-    cy.get("#input-password-confirm").should("be.visible").type(user.password);
-    cy.get("button").should("be.visible").click();
+      cy.get("#input-first-name").should("be.visible").type(user.firstName);
+      cy.get("#input-last-name").should("be.visible").type(user.lastName);
+      cy.get("#input-email").should("be.visible").type(user.email);
+      cy.get("#input-password").should("be.visible").type(user.password);
+      cy.get("#input-password-confirm")
+        .should("be.visible")
+        .type(user.password);
+      cy.get("button").should("be.visible").click();
+    });
   });
 });
 

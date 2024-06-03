@@ -1,25 +1,22 @@
 /// <reference types="cypress" />
 
 describe("Login page", () => {
-  const user = {
-    firstName: "Jerry",
-    lastName: "Seinfeld",
-    email: "seinfeld@mail.com",
-    password: "asdQWE123",
-  };
-
   before(() => {
-    cy.window().then((window) => {
-      window.localStorage.setItem("seinfeld@mail.com", JSON.stringify(user));
+    cy.fixture("user").then((user) => {
+      cy.window().then((window) => {
+        window.localStorage.setItem("seinfeld@mail.com", JSON.stringify(user));
+      });
     });
   });
 
   it("lets the user log in", () => {
-    cy.visit("http://localhost:5173/login");
+    cy.fixture("user").then((user) => {
+      cy.visit("http://localhost:5173/login");
 
-    cy.get("#input-email").should("be.visible").type(user.email);
-    cy.get("#input-password").should("be.visible").type(user.password);
-    cy.get("button").should("be.visible").click();
+      cy.get("#input-email").should("be.visible").type(user.email);
+      cy.get("#input-password").should("be.visible").type(user.password);
+      cy.get("button").should("be.visible").click();
+    });
   });
 });
 
