@@ -10,7 +10,6 @@ import { Outlet } from "react-router-dom";
  * Renders the main dashboard component.
  *
  * @component
- * @param {DashboardProps} props - See {@link DashboardProps}.
  * @returns {JSX.Element} The rendered Dashboard component.
  */
 export const Dashboard = (): JSX.Element => {
